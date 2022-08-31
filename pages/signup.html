@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mehoy Minoy - sign up</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+      <div class="imgbox">
+        <img class="header-image" src="../images/Rectangle.svg"></img>
+        <img class="header-logo" src="../images/MediumLogo.svg"></img>
+      </div>
+
+      <div class="sign-up-container">
+          <div class="sign-up-subcontainer">
+            <div class="sign-up">
+                <p class="sign-up-text">Sign up</p>
+                <form action="/users" method="post"><div style="margin:0;padding:0">
+                  <div>
+                    <p class="user-pass-text">First Name 
+                      <a class="red-astrix">*</a>
+                      <span class="sign-up-spacer"></span>
+                      <a class="user-pass-text">Last Name
+                      <a class="red-astrix">*</a></p>
+                    <input type="text" class="user-pass-input-short" required/>
+                    <input type="text" class="user-pass-input-short" required/>
+                  </div>
+                <p class="user-pass-text">Username
+                  <a class="red-astrix">*</a></p>
+                <input type="text" class="user-pass-input" required>
+                <p class="user-pass-text">Password
+                  <a class="red-astrix">*</a></p>
+                <input type="text" class="user-pass-input" required>
+
+                <button type="submit" class="sign-up-button">SIGN UP</button>
+                <p class="login-prompt">Already have an account? <a class="login-prompt-butt" href="login.html">Login</button></p>
+            </div>
+          </div>
+      </div>
+  </body>
+</html>

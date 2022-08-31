@@ -3,11 +3,7 @@ body {
 }
 
 .header-image {
-    position: absolute;
-    width: 1440px;
-    height: 80px;
-    left: 0px;
-    top: 0px;
+    width: 100%;
 }
 
 .header-logo {
@@ -19,11 +15,21 @@ body {
     margin-bottom: auto;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.imgbox {
+    display: grid;
+    height: 100%;
+}
+
 .sign-in-container {
     position: relative;
     height: 375px;
     width: 100%;
-    top: 269px;
+    top: 70px;
     display: flex;
     justify-content: center;
 }
@@ -57,8 +63,19 @@ body {
     margin-bottom: 5px;
 }
 
+
 .user-pass-input {
-    width: 100%;
+    width: 19.44em;
+    height: 41px;
+    font-size: 22px;
+    border-radius: 7px;
+    padding-left: 7px;
+    margin-bottom: 20px;
+    border-width: 1px;
+}
+
+.user-pass-input-short {
+    width: 9.42em;
     height: 41px;
     font-size: 22px;
     border-radius: 7px;
@@ -68,7 +85,7 @@ body {
 }
 
 .login-button {
-    width: 450px;
+    width: 437px;
     height: 47px;
     margin-top: 3px;
     background-color: #386641;
@@ -94,17 +111,72 @@ body {
     color: blue;
 }
 
-* {
-    margin: 0;
-    padding: 0;
+.sign-up-container {
+    position: relative;
+    height: 375px;
+    width: 100%;
+    top: 70px;
+    display: flex;
+    justify-content: center;
 }
-.imgbox {
-    display: grid;
+
+.sign-up-subcontainer {
+    width: 437px;
     height: 100%;
 }
 
-.background {
-  background-image: url(images/Rectangle.svg);
-  background-repeat: repeat-x;
-  width: 100%
+.sign-up {
+    position: absolute;
+    height: 100%;
+    width: 437px;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: left;
+}
+
+.sign-up-text {
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 76px;
+    margin-top: 0px;
+    margin-bottom: 17px;
+}
+
+.sign-up-button {
+    width: 437px;
+    height: 47px;
+    margin-top: 3px;
+    background-color: #386641;
+    border-radius: 7px;
+    border-width: 0px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+.login-prompt {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.login-prompt-butt {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: blue;
+}
+
+.sign-up-spacer {
+    margin-left: 78px;
+}
+
+.red-astrix {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    color: red;
 }
