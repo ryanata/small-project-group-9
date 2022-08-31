@@ -1,0 +1,92 @@
+body {
+    background-color: #E3F0C3;
+}
+
+.header-image {
+    position: absolute;
+    width: 1440px;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+}
+
+.header-logo {
+    position: absolute;
+    left: 520px;
+    top: 60px;
+}
+
+.sign-in-container {
+    position: relative;
+    height: 375px;
+    width: 100%;
+    top: 269px;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-in-subcontainer {
+    width: 437px;
+    height: 100%;
+}
+
+.sign-in {
+    position: absolute;
+    height: 100%;
+    width: 437px;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: left;
+}
+
+.sign-in-text {
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 76px;
+    margin-top: 0px;
+    margin-bottom: 17px;
+}
+
+.user-pass-text {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+}
+
+.user-pass-input {
+    width: 100%;
+    height: 41px;
+    font-size: 22px;
+    border-radius: 7px;
+    padding-left: 7px;
+    margin-bottom: 20px;
+    border-width: 1px;
+}
+
+.login-button {
+    width: 450px;
+    height: 47px;
+    margin-top: 3px;
+    background-color: #386641;
+    border-radius: 7px;
+    border-width: 0px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+.signup-prompt {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.signup-prompt-butt {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: blue;
+}
