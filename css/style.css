@@ -97,6 +97,10 @@ body {
     color: white;
 }
 
+.login-button:hover {
+    background-color: #368707;
+}
+
 .signup-prompt {
     font-weight: 400;
     font-size: 20px;
@@ -152,6 +156,10 @@ body {
     font-weight: bold;
     font-size: 24px;
     color: white;
+}
+
+.sign-up-button:hover {
+    background-color: #368707;
 }
 
 .login-prompt {
