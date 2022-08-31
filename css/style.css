@@ -8,11 +8,13 @@ body {
 
 .header-logo {
     max-width: 100%;
+    min-width: 200px;
     max-height: 100%;
     margin-top: -20px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
+    display: block;
 }
 
 * {
@@ -49,6 +51,7 @@ body {
 }
 
 .sign-in-text {
+    max-width: 100%;
     font-weight: 400;
     font-size: 56px;
     line-height: 76px;
@@ -218,4 +221,5 @@ body {
 .names-container {
     display: flex;
     justify-content: space-between;
+    max-width: 100%;
 }
