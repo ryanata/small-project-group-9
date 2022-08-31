@@ -21,13 +21,17 @@
       <div class="sign-in-container">
           <div class="sign-in-subcontainer">
             <div class="sign-in">
-                <p class="sign-in-text">Login</p>
-                <p class="user-pass-text">Username</p>
-                <input type="text" id="UsernameLogin" class="user-pass-input">
-                <p class="user-pass-text">Password</p>
-                <input type="text" id="PasswordLogin" class="user-pass-input">
+                <p class="sign-in-text">Log into your account</p>
 
-                <button type="submit" onclick="dologin();" class="login-button">LOG IN</button>
+                <form>
+                  <label for="UsernameLogin" class="form-label">Username<a class="red-astrix">*</a></p></label>
+                  <input type="text" name="UsernameLogin" id="UsernameLogin" class="user-pass-input" required>
+    
+                  <label for="PasswordLogin" class="form-label">Password<a class="red-astrix">*</a></p></label>
+                  <input type="text" name="PasswordLogin" id="PasswordLogin" class="user-pass-input" required>
+                </form>
+
+                <button type="submit" onclick="dologin();" class="login-button">Log in</button>
                 <p class="signup-prompt">Don't have an account? <a class="signup-prompt-butt" href="signup.html">Sign up</button></p>
             </div>
           </div>

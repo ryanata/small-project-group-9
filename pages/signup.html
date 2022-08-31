@@ -26,21 +26,21 @@
             <form action="/users" method="post" class="sign-up-form">
               <div>
                 <span class ="short-form-container" style="float: left">
-                  <label class="form-label">First Name<a class="red-astrix">*</a></p></label>
-                  <input type="text" id="FirstNameSignup" class="user-pass-input-short" required/>
+                  <label for="FirstNameSignup" class="form-label">First Name<a class="red-astrix">*</a></p></label>
+                  <input type="text" name="FirstNameSignup" id="FirstNameSignup" class="user-pass-input-short" required/>
                 </span>
                 
                 <span class ="short-form-container" style="float: right">
-                  <label class="form-label">Last Name<a class="red-astrix">*</a></p></label>
-                  <input type="text" id="LastNameSignup" class="user-pass-input-short" required/>
+                  <label for="LastNameSignup" class="form-label">Last Name<a class="red-astrix">*</a></p></label>
+                  <input type="text" name="LastNameSignup" id="LastNameSignup" class="user-pass-input-short" required/>
                 </span>
               </div>
 
-              <label class="form-label">Username<a class="red-astrix">*</a></p></label>
-              <input type="text" id="UsernameSignup" class="user-pass-input" required>
+              <label for="UsernameSignup" class="form-label">Username<a class="red-astrix">*</a></p></label>
+              <input type="text" name="UsernameSignup" id="UsernameSignup" class="user-pass-input" required>
 
-              <label class="form-label">Password<a class="red-astrix">*</a></p></label>
-              <input type="text" id="PasswordSignup" class="user-pass-input" required>
+              <label for="PasswordSignup" class="form-label">Password<a class="red-astrix">*</a></p></label>
+              <input type="text" name="PasswordSignup" id="PasswordSignup" class="user-pass-input" required>
 
               <button type="submit" onclick="dosignup();" class="sign-up-button">Register</button>
               <p class="login-prompt">Already have an account? <a class="login-prompt-butt" href="login.html">Login</button></p>
