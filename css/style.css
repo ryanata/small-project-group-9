@@ -79,7 +79,7 @@ body {
 }
 
 .user-pass-input-short {
-    width: 9.42em;
+    width: 196px;
     height: 41px;
     font-size: 22px;
     border-radius: 7px;
@@ -107,6 +107,7 @@ body {
 }
 
 .signup-prompt {
+    padding-top: 10px;
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;
@@ -168,6 +169,7 @@ body {
 }
 
 .login-prompt {
+    padding-top: 10px;
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;
@@ -199,4 +201,21 @@ body {
     display: inline-block;
     height: 80px;
     width: 100%;
+}
+
+.first-name {
+    width: 216px;
+    height: 100px;
+    margin: 0px;
+}
+
+.last-name {
+    width: 216px;
+    height: 100px;
+    margin: 0px;
+}
+
+.names-container {
+    display: flex;
+    justify-content: space-between;
 }

@@ -23,20 +23,21 @@
             <div class="sign-up">
                 <p class="sign-up-text">Sign up</p>
                 <form action="/users" method="post"><div style="margin:0;padding:0">
-                  <div>
-                    <p class="user-pass-text">First Name 
-                      <a class="red-astrix">*</a>
-                      <span class="sign-up-spacer"></span>
-                      <a class="user-pass-text">Last Name
-                      <a class="red-astrix">*</a></p>
-                    <input type="text" id="FirstNameSignup" class="user-pass-input-short" required/>
-                    <input type="text" id="LastNameSignup" class="user-pass-input-short" required/>
+                  <div class="names-container">
+                    <div class="first-name">
+                      <p class="user-pass-text">First Name<a class="red-astrix">*</a></p>
+                      <input type="text" id="FirstNameSignup" class="user-pass-input-short" required/>
+                    </div>
+
+                    <div class="last-name">
+                      <p class="user-pass-text">Last Name<a class="red-astrix">*</a></p>
+                      <input type="text" id="LastNameSignup" class="user-pass-input-short" required/>
+                    </div>
+                      <!-- <span class="sign-up-spacer"></span> -->
                   </div>
-                <p class="user-pass-text">Username
-                  <a class="red-astrix">*</a></p>
+                <p class="user-pass-text">Username<a class="red-astrix">*</a></p>
                 <input type="text" id="UsernameSignup" class="user-pass-input" required>
-                <p class="user-pass-text">Password
-                  <a class="red-astrix">*</a></p>
+                <p class="user-pass-text">Password<a class="red-astrix">*</a></p>
                 <input type="text" id="PasswordSignup" class="user-pass-input" required>
 
                 <button type="submit" onclick="dosignup();" class="sign-up-button">SIGN UP</button>
