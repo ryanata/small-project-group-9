@@ -250,3 +250,76 @@ body {
     margin: 0, 0, 0, 0;
 }
 
+.title-text {
+    position: relative;
+    padding-top: 30px;
+    line-height: 10px;
+    font-weight: 500;
+    font-size: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #386641;
+}
+
+.subtitle-text {
+    position: relative;
+    padding-top: 30px;
+    line-height: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #595959;
+}
+
+.contact-box {
+    display: grid;
+    height: 100%;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.vertical-padding {
+    height: 40px;
+}
+
+.gray-box {
+    position: relative;
+    border-radius: 10px;
+    border-width: 0px;
+    width: 80%;
+    height: 40px;
+    background-color: #dcdcdc;
+}
+
+.white-box {
+    position: relative;
+    border-radius: 10px;
+    border-width: 0px;
+    width: 80%;
+    height: 40px;
+    background-color: #ffffff;
+}
+
+.add-contact-button {
+    position: relative;
+    margin: auto;
+    width: 90px;
+    height: 35px;
+    margin-top: 3px;
+    margin-left: 77.8%;
+    margin-bottom: 5px;
+    background-color: #386641;
+    border-radius: 7px;
+    border-width: 0px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+.add-contact-button:hover {
+    background-color: #368707;
+}
