@@ -20,9 +20,9 @@
         else
         {
             // preparing a mySQL query
-            $stmt = $conn->prepare("DELETE FROM Contacts WHERE FirstName = ? AND LastName = ?");
+            $stmt = $conn->prepare("DELETE FROM Contacts WHERE Id = ?");
             // binding parameters to mySQL query
-            $stmt->bind_param("ss", $first, $last);
+            $stmt->bind_param("ss", $Id);
             // sending query
             $stmt->execute();
             $stmt->close();
