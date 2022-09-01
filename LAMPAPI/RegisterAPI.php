@@ -13,12 +13,27 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
-		$stmt->bind_param("ss", $first, $last, $login, $password);
+		// checking if userID already exists
+		// gets number of rows with the passed userID
+		$stmt = $conn->prepare("select count(*) from Users where login = ?");
+		// binds parameter for the question mark thing
+		$stmt->bind_param("ss", $login);
 		$stmt->execute();
-		$stmt->close();
-		$conn->close();
-		returnWithError("");
+		// store result
+		$result = $stmt->get_result();
+		if ($result > 0) // if the userID exists
+		{
+			returnWithError();
+		}
+		else
+		{
+			$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
+			$stmt->bind_param("ss", $first, $last, $login, $password);
+			$stmt->execute();
+			$stmt->close();
+			$conn->close();
+			returnWithError("");
+		}
 	}
 
 	function getRequestInfo()
