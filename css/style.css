@@ -53,10 +53,11 @@ body {
 .sign-in-text {
     max-width: 100%;
     font-weight: 400;
-    font-size: 56px;
+    font-size: 42px;
     line-height: 76px;
     margin-top: 0px;
     margin-bottom: 17px;
+    text-align: center;
 }
 
 .user-pass-text {
@@ -70,25 +71,28 @@ body {
 
 
 .user-pass-input {
-    width: 19.44em;
+    width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     height: 41px;
     font-size: 22px;
     border-radius: 7px;
     padding-left: 7px;
+    padding-right: 7px;
     margin-bottom: 20px;
     border-width: 1px;
 }
 
 .user-pass-input-short {
-    width: 196px;
+    width: 100%;
     height: 41px;
-    font-size: 22px;
+    font-size: 20px;
     border-radius: 7px;
     padding-left: 7px;
+    padding-right: 7px;
     margin-bottom: 20px;
     border-width: 1px;
+    box-sizing: border-box;
 }
 
 .login-button {
@@ -135,6 +139,7 @@ body {
 
 .sign-up-subcontainer {
     width: 437px;
+    max-width: 100%;
     height: 100%;
 }
 
@@ -142,20 +147,23 @@ body {
     position: absolute;
     height: 100%;
     width: 437px;
+    max-width: 100%;
     font-family: 'Noto Sans', sans-serif;
     text-align: left;
 }
 
 .sign-up-text {
     font-weight: 400;
-    font-size: 56px;
+    font-size: 42px;
     line-height: 76px;
     margin-top: 0px;
     margin-bottom: 17px;
+    text-align: center;
 }
 
 .sign-up-button {
     width: 437px;
+    max-width: 100%;
     height: 47px;
     margin-top: 3px;
     background-color: #386641;
@@ -222,4 +230,96 @@ body {
     display: flex;
     justify-content: space-between;
     max-width: 100%;
+}
+
+.signup-form {
+    font-size: 0;
+}
+
+.short-form-container {
+    font-size: 0;
+    display: inline-block;
+    max-width: 49%;
+}
+
+.form-label {
+    font-size: 22px;
+    display: block;
+    max-width: 100%;
+    padding: 0, 0, 0, 0;
+    margin: 0, 0, 0, 0;
+}
+
+.title-text {
+    position: relative;
+    padding-top: 30px;
+    line-height: 10px;
+    font-weight: 500;
+    font-size: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #386641;
+}
+
+.subtitle-text {
+    position: relative;
+    padding-top: 30px;
+    line-height: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #595959;
+}
+
+.contact-box {
+    display: grid;
+    height: 100%;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.vertical-padding {
+    height: 40px;
+}
+
+.gray-box {
+    position: relative;
+    border-radius: 10px;
+    border-width: 0px;
+    width: 80%;
+    height: 40px;
+    background-color: #dcdcdc;
+}
+
+.white-box {
+    position: relative;
+    border-radius: 10px;
+    border-width: 0px;
+    width: 80%;
+    height: 40px;
+    background-color: #ffffff;
+}
+
+.add-contact-button {
+    position: relative;
+    margin: auto;
+    width: 90px;
+    height: 35px;
+    margin-top: 3px;
+    margin-left: 77.8%;
+    margin-bottom: 5px;
+    background-color: #386641;
+    border-radius: 7px;
+    border-width: 0px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+}
+
+.add-contact-button:hover {
+    background-color: #368707;
 }
