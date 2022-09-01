@@ -1,11 +1,6 @@
 <?php
     	$inData = getRequestInfo();
 	
-        $first = $inData["firstname"];
-        $last = $inData["lastname"];
-        $phone = $inData["phone"];
-        $address = $inData["address"];
-        $userId = $inData["userId"];
         $Id = $inData["Id"];
     
         // mySQL object
