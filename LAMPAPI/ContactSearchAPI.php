@@ -12,7 +12,7 @@
 	} 
 	else
 	{
-		// if adding lazy loading, select top ten instead of *
+		// if adding lazy loading, select top 10 * instead of select *
 		$stmt = $conn->prepare("select * from Contacts where (FirstName LIKE ? OR LastName LIKE ? OR  Address LIKE ? OR PhoneNumber like ?) and UserID = ?");
 		$searchParam = "%" . $inData["search"] . "%";
 		$stmt->bind_param("ss", $searchParam , $searchParam , $searchParam , $searchParam , $inData["userId"]);
