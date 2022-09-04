@@ -274,42 +274,60 @@ body {
     color: #595959;
 }
 
-.contact-box {
+.table-format {
+    position: absolute;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 40px;
+    overflow: hidden;
     display: grid;
-    height: 100%;
-    margin-left: 50px;
-    margin-right: 50px;
+    width: calc(100% - 100px);
 }
 
-.vertical-padding {
-    height: 40px;
+#contact-table {
+    display: table;
 }
 
-.gray-box {
+.tr-g {
     position: relative;
     border-radius: 10px;
-    border-width: 0px;
-    width: 80%;
     height: 40px;
     background-color: #dcdcdc;
 }
 
-.white-box {
+.tr-w {
     position: relative;
     border-radius: 10px;
-    border-width: 0px;
-    width: 80%;
     height: 40px;
     background-color: #ffffff;
 }
 
+.tc-button {
+    position: relative;
+    float: right;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 38px;
+    width: 30px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-width: 0px;
+    border-radius: 10px;
+    background-color:#386641;
+    color:rgb(33, 33, 33);
+}
+
+.tc-button:hover {
+    background-color: #368707;
+}
+
 .add-contact-button {
     position: relative;
-    margin: auto;
+    float: right;
     width: 90px;
     height: 35px;
     margin-top: 3px;
-    margin-left: 77.8%;
     margin-bottom: 5px;
     background-color: #386641;
     border-radius: 7px;
@@ -321,5 +339,45 @@ body {
 }
 
 .add-contact-button:hover {
+    background-color: #368707;
+}
+
+.next-page-button {
+    position: relative;
+    float: right;
+    width: 200px;
+    line-height: 35px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    background-color: #386641;
+    border-radius: 7px;
+    border-width: 0px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-size: 44px;
+    color: white;
+}
+
+.next-page-button:hover {
+    background-color: #368707;
+}
+
+.prev-page-button {
+    position: relative;
+    float: left;
+    width: 200px;
+    line-height: 35px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    background-color: #386641;
+    border-radius: 7px;
+    border-width: 0px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-size: 44px;
+    color: white;
+}
+
+.prev-page-button:hover {
     background-color: #368707;
 }
