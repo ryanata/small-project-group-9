@@ -1,11 +1,7 @@
 <?php
 	$inData = getRequestInfo();
-	
-	$first = $inData["firstname"];
-	$last = $inData["lastname"];
-	$login = $inData["login"];
-	$password= $inData["password"];
 
+	
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "smallproject9"); 	
 	if ($conn->connect_error) 
 	{
@@ -13,27 +9,43 @@
 	} 
 	else
 	{
+		/*
 		// checking if userID already exists
 		// gets number of rows with the passed userID
-		$stmt = $conn->prepare("select count(*) as count from Users where login = ?");
+		$stmt1 = $conn->prepare("select count(*) as count from Users where login = ?");
 		// binds parameter for the question mark thing
-		$stmt->bind_param("ss", $login);
-		$stmt->execute();
+		$stmt1->bind_param("s", $login);
+		$login = $inData["login"];
+		$stmt1->execute();
 		// store result
+		
 		$result = $stmt->get_result();
+		$stmt1->close();
 		if ($row['count'] > 0) // if the userID exists
 		{
+			$conn->close();
 			returnWithError("Existing user found");
 		}
 		else
 		{
-			$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
-			$stmt->bind_param("ss", $first, $last, $login, $password);
+			*/
+			// prepare and bind
+			$stmt = $conn->prepare("INSERT INTO Users (FirstName,LastName,Login,Password) VALUES (?, ?, ?, ?)");
+			$stmt->bind_param("ssss", $firstname, $lastname, $login, $password);
+
+			// set parameters and execute
+			$firstname = $inData["firstname"];
+			$lastname = $inData["lastname"];
+			$login = $inData["login"];
+			$password= $inData["password"];
+			
 			$stmt->execute();
+	
 			$stmt->close();
 			$conn->close();
-			returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
-		}
+			returnWithInfo( "Cameron", "Parrish", 100 );
+		//}
+		
 	}
 
 	function getRequestInfo()
