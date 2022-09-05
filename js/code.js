@@ -46,7 +46,7 @@ function doLogin()
 
 				saveCookie();
 
-				window.location.href = "color.html";
+				window.location.href = "contacts-sheet.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -54,6 +54,55 @@ function doLogin()
 	catch(err)
 	{
 		document.getElementById("loginResult").innerHTML = err.message;
+	}
+
+}
+
+function dosignup()
+{
+	userId = 0;
+	firstName = "";
+	lastName = "";
+
+	let login = document.getElementById("loginName").value;
+	let password = document.getElementById("loginPassword").value;
+	let lastname = document.getElementById("LastNameSignup").value;
+	let firstname = document.getElementById("FirstNameSignup").value;
+//	var hash = md5( password );
+
+	document.getElementById("registerResult").innerHTML = "";
+
+	let tmp = {login:login,password:password,firstname:firstname,lastname:lastname};
+//	var tmp = {login:login,password:hash};
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/signup.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				let jsonObject = JSON.parse( xhr.responseText );
+				userId = jsonObject.id;
+
+				if( userId < 1 )
+				{
+					document.getElementById("registerResult").innerHTML = "An existing user has that login already.";
+					return;
+				}
+				window.location.href = "login.html";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
 	}
 
 }
