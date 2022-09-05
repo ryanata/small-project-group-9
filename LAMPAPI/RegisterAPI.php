@@ -6,7 +6,7 @@
 	$login = $inData["login"];
 	$password= $inData["password"];
 
-	$conn = new mysqli("localhost", "root", "gr0upN1ne", "smallproject9");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "smallproject9"); 	
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
@@ -15,15 +15,15 @@
 	{
 		// checking if userID already exists
 		// gets number of rows with the passed userID
-		$stmt = $conn->prepare("select count(*) from Users where login = ?");
+		$stmt = $conn->prepare("select count(*) as count from Users where login = ?");
 		// binds parameter for the question mark thing
 		$stmt->bind_param("ss", $login);
 		$stmt->execute();
 		// store result
 		$result = $stmt->get_result();
-		if ($result > 0) // if the userID exists
+		if ($row['count'] > 0) // if the userID exists
 		{
-			returnWithError();
+			returnWithError("Existing user found");
 		}
 		else
 		{
@@ -32,7 +32,7 @@
 			$stmt->execute();
 			$stmt->close();
 			$conn->close();
-			returnWithError("");
+			returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
 		}
 	}
 
@@ -53,4 +53,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
+		function returnWithInfo( $firstName, $lastName, $id )
+	{
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		sendResultInfoAsJson( $retValue );
+	}
 ?>
