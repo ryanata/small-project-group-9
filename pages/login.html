@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mehoy Minoy - login</title>
     <link rel="stylesheet" href="../css/style.css">
+	<script type="text/javascript" src="../js/md5.js"></script>
+	<script type="text/javascript" src="../js/code.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,13 +27,14 @@
 
                 <form>
                   <label for="UsernameLogin" class="form-label">Username<a class="red-astrix">*</a></p></label>
-                  <input type="text" name="UsernameLogin" id="UsernameLogin" class="user-pass-input" required>
+                  <input type="text" name="loginName" id="loginName" class="user-pass-input" required>
     
                   <label for="PasswordLogin" class="form-label">Password<a class="red-astrix">*</a></p></label>
-                  <input type="password" name="PasswordLogin" id="PasswordLogin" class="user-pass-input" required>
+                  <input type="password" name="loginPassword" id="loginPassword" class="user-pass-input" required>
                 </form>
 
-                <button type="submit" onclick="dologin();" class="login-button">Log in</button>
+                <button type="submit" onclick="doLogin();" class="login-button">Log in</button>
+		<span id="loginResult"></span>
                 <p class="signup-prompt">Don't have an account? <a class="signup-prompt-butt" href="signup.html">Sign up</button></p>
             </div>
           </div>
