@@ -34,8 +34,8 @@ function doLogin()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
-
-				if( userId < 1 )
+				
+				if( userId < 1)
 				{
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
@@ -76,7 +76,7 @@ function dosignup()
 //	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/signup.' + extension;
+	let url = urlBase + '/RegisterAPI.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -86,15 +86,17 @@ function dosignup()
 		xhr.onreadystatechange = function()
 		{
 			if (this.readyState == 4 && this.status == 200)
-			{
+			// {
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
-
-				if( userId < 1 )
+				error = jsonObject.error;
+				
+				if( userId < 1 || error.length != 0)
 				{
 					document.getElementById("registerResult").innerHTML = "An existing user has that login already.";
 					return;
 				}
+				saveCookie();
 				window.location.href = "login.html";
 			}
 		};
