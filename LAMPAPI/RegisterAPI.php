@@ -9,7 +9,7 @@
 	} 
 	else
 	{
-		/*
+		
 		// checking if userID already exists
 		// gets number of rows with the passed userID
 		$stmt1 = $conn->prepare("select count(*) as count from Users where login = ?");
@@ -18,17 +18,18 @@
 		$login = $inData["login"];
 		$stmt1->execute();
 		// store result
-		
-		$result = $stmt->get_result();
+		$result = $stmt1->get_result();
+		$row = $result->fetch_assoc();
+
 		$stmt1->close();
-		if ($row['count'] > 0) // if the userID exists
+		if ((int)$row['count'] > 0) // if the userID exists
 		{
 			$conn->close();
 			returnWithError("Existing user found");
 		}
 		else
 		{
-			*/
+			
 			// prepare and bind
 			$stmt = $conn->prepare("INSERT INTO Users (FirstName,LastName,Login,Password) VALUES (?, ?, ?, ?)");
 			$stmt->bind_param("ssss", $firstname, $lastname, $login, $password);
@@ -44,7 +45,7 @@
 			$stmt->close();
 			$conn->close();
 			returnWithInfo( "Cameron", "Parrish", 100 );
-		//}
+		}
 		
 	}
 
