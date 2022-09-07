@@ -1,0 +1,58 @@
+body {
+    background-color: #E3F0C3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.body-text {
+    position: relative;
+    line-height: 10px;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #386641;
+}
+
+.title-text {
+    position: relative;
+    padding-top: 30px;
+    line-height: 10px;
+    font-weight: 500;
+    font-size: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #386641;
+}
+
+.subtitle-text {
+    position: relative;
+    padding-top: 30px;
+    line-height: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #595959;
+}
+
+.table-format {
+    position: relative;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 40px;
+    overflow: hidden;
+    display: grid;
+    width: 100%;
+}
+
+.new-contact-button {
+    position: relative;
+    float: right;
+    padding-left: calc(100% - 34px);
+}

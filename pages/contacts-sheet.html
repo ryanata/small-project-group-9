@@ -5,16 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mehoy Minoy - contacts</title>
-
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <!--Bootstrap imports-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet"href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
-
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,10 +22,11 @@
         <p class="subtitle-text">CONTACT MANAGER</p>
       </div>
       <div class="table-format">
-          <div class="new-contact-button">
-            <button class="btn btn-success" onClick="addContact();">+</button>
-          </div>
-          <table 
+        <div class="new-contact-button">
+          <button class="btn btn-success" onClick="addContact();">+</button>
+        </div>
+
+        <table 
             id="contact_table"
             class="table-striped text-center table-responsive-md" 
             style="background-color:#eeeeee"
@@ -55,50 +51,46 @@
             </thead>
           </table>
       </div>
-    </div>
+
+       <!-- Include jQuery and other required files for Bootstrap -->
+       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
       
-      <!-- Include jQuery and other required files for Bootstrap -->
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      
-      <!-- Include the JavaScript file for Bootstrap table -->
-      <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
-      
-      <!-- Include the file where the JSON data is stored -->
-      <script type="text/javascript" src="../js/contact_data.js"></script>
-      <script type="text/javascript">
-        $(document).ready(function () {
-          // Use the given data to create 
-          // the table and display it
-          $('table').bootstrapTable({
-            data: mydata,
-            columns: [ {},{},{},{
-                  field: 'operate',
-                  title: 'Edit',
-                  align: 'center',
-                  valign: 'middle',
-                  width: '100px',
-                  clickToSelect: false,
-                  formatter : function(value,row,index) {
-                    return '<button class=\'btn btn-primary\' onclick=\'editRow();\'>Edit</button> ';
-                  }
-            },{
-                  field: 'operate',
-                  title: 'Delete',
-                  align: 'center',
-                  valign: 'middle',
-                  width: '100px',
-                  clickToSelect: false,
-                  formatter : function(value,row,index) {
-                    return '<button class=\'btn btn-danger\' onclick=\'deleteRow();\'>Delete</button> ';
-                  }
-              }]               
-          });
-        });
-        // Parse the imported data as JSON
-        // and store it
-        var mydata = JSON.parse(contacts)
-      </script>
+ 
+       <!-- Include the JavaScript file for Bootstrap table -->
+       <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+ 
+       <!-- Include the file where the JSON data is stored -->
+       <script type="text/javascript" src="../js/contact_data.js"></script>
+       <script type="text/javascript">
+         $(document).ready(function () {
+           // Use the given data to create 
+           // the table and display it
+           $('table').bootstrapTable({
+             data: mydata,
+             columns: [ {},{},{},{
+                   field: 'operate',
+                   align: 'center',
+                   valign: 'middle',
+                   width: '100px',
+                   clickToSelect: false,
+                   formatter : function(value,row,index) {
+                     return '<button class=\'btn btn-primary\' onclick=\'editRow();\'>Edit</button> ';
+                   }
+             },{
+                   field: 'operate',
+                   align: 'center',
+                   valign: 'middle',
+                   width: '100px',
+                   clickToSelect: false,
+                   formatter : function(value,row,index) {
+                     return '<button class=\'btn btn-danger\' onclick=\'deleteRow();\'>Delete</button> ';
+                   }
+               }]               
+           });
+         });
+         // Parse the imported data as JSON
+         // and store it
+         var mydata = JSON.parse(contacts)
+       </script>
   </body>
 </html>
