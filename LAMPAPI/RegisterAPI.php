@@ -44,7 +44,7 @@
 	
 			$stmt->close();
 			$conn->close();
-			returnWithInfo( $firstname, $lastname, $id);
+			returnWithInfo( $firstname, $lastname, $stmt->insert_id);
 		}
 		
 	}
