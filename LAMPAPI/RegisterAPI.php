@@ -44,7 +44,7 @@
 	
 			$stmt->close();
 			$conn->close();
-			returnWithInfo( $firstname, $lastname, 5);
+			returnWithInfo( $firstname, $lastname, $id);
 		}
 		
 	}
