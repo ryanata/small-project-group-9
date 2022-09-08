@@ -42,9 +42,11 @@
 			
 			$stmt->execute();
 	
+			returnWithInfo( $firstname, $lastname, $stmt->insert_id);
+			
 			$stmt->close();
 			$conn->close();
-			returnWithInfo( $firstname, $lastname, $stmt->insert_id);
+			
 		}
 		
 	}
