@@ -86,7 +86,7 @@ function dosignup()
 		xhr.onreadystatechange = function()
 		{
 			if (this.readyState == 4 && this.status == 200)
-			   {
+			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
 				error = jsonObject.error;
@@ -115,6 +115,7 @@ function saveCookie()
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+	sessionStorage.setItem('userID', userId);
 }
 
 function readCookie()

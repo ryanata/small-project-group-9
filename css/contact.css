@@ -7,22 +7,34 @@ body {
     padding: 0;
 }
 
-.body-text {
+.container {
+    display: grid;
+    grid-template-rows: 30fr 9fr 43fr 9fr 9fr;
+    height: 100vh;
+    grid-row-gap: 0.25rem;
+}
+
+/* Header */
+.banner-text {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 300;
+}
+
+.logo {
+    letter-spacing: 0.1em;
+    /* Vertically align WITHOUT FLEXBOX*/
     position: relative;
-    line-height: 10px;
-    font-size: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    color: #386641;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .title-text {
     position: relative;
     padding-top: 30px;
     line-height: 10px;
-    font-weight: 500;
-    font-size: 50px;
+    font-size: 58px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -31,28 +43,131 @@ body {
 
 .subtitle-text {
     position: relative;
+    margin-top: 14px;
     padding-top: 30px;
     line-height: 10px;
-    font-weight: 400;
-    font-size: 20px;
+    font-size: 22px;
     width: 100%;
     display: flex;
     justify-content: center;
     color: #595959;
 }
 
-.table-format {
-    position: relative;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 40px;
-    overflow: hidden;
-    display: grid;
-    width: 100%;
+/* Search area */
+.search {
+    display: flex;
+    justify-content: center;
 }
 
-.new-contact-button {
-    position: relative;
-    float: right;
-    padding-left: calc(100% - 34px);
+.search-aligned {
+    width: 90%;
+    display:flex;
+    justify-content: space-between;
+}
+
+.search-box {
+    height: 100%;
+    width: 60%;   
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    font-family: 'Be Vietnam Pro', sans-serif, 'Font Awesome 5 Free';
+    border-width: 1px;
+    letter-spacing: 0.05em;
+    width: 100%;
+    height: 70%;
+    padding-left: 1rem;
+    font-size: 1.3vw;
+    border-radius: 16px;
+}
+
+.add-entry {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.add-btn {
+    border-radius: 16px;
+    border-width: 1px;
+    height: 70%;
+    width: 70%;
+    background-color: #386641;
+}
+
+.plus-icon {
+    color: white;
+    font-size: 1.5vw !important;
+}
+
+/* Table */
+.table {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    font-family: 'Noto Sans', sans-serif;;
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px #e1e5ee;
+    background-color: white;
+    text-align: left;
+    overflow: hidden;
+    width: 90%;
+    font-size: 1.2vw;  
+    table-layout: fixed;
+}
+
+thead {
+    box-shadow: 0 5px 10px #e1e5ee;
+}
+
+th {
+    font-weight: normal;    
+    padding: 0.5rem 2rem;
+}
+
+tr:nth-child(even) {
+    background-color: #f4f6fb;;
+}
+
+td {
+    font-weight: bold;
+    padding: 0rem 2rem;
+}
+
+.icon-header {
+    width: 3.3rem;
+}
+
+@media screen and (max-width: 750px) {
+    th {
+        padding: 0.5rem 0rem;
+    }
+
+    td { 
+        padding: 0rem 0rem;
+    }
+
+    table {
+        font-size: 2vw;
+    }
+}
+
+/* Add entry modal */
+.add-modal {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 60%;
+    height: 60%;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px #e1e5ee;
 }
