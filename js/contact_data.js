@@ -64,6 +64,38 @@ function doContact(newContact)
 	}
 }
 
+function doSearch()
+{
+	let search = document.getElementById("search").value;
+
+
+	let tmp = {search:search,userId:USER_ID};
+	
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/ContactSearchAPI.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
+			{
+				let jsonObject = JSON.parse( xhr.responseText );
+                		console.log(jsonObject);
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		console.log(err);
+	}
+}
+
 // Create empty rows
 for (let i = 0; i < 10; i++) {
     $("#tableBody").append(createRow("","",""));
