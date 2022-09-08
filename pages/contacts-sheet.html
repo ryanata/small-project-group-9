@@ -6,91 +6,85 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mehoy Minoy - contacts</title>
     <link rel="stylesheet" href="../css/contact.css">
-    <!--Bootstrap imports-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet"href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
 
-  <body style="background-color:#E3F0C3">
+  <body>
+    <div class="container">
       <div class="banner-text">
-        <p class="title-text">mehoyminoy</p>
-        <p class="subtitle-text">CONTACT MANAGER</p>
-      </div>
-      <div class="table-format">
-        <div class="new-contact-button">
-          <button class="btn btn-success" onClick="addContact();">+</button>
+        <div class="logo">
+          <p class="title-text">mehoyminoy</p>
+          <p class="subtitle-text">CONTACT MANAGER</p>
         </div>
-
-        <table 
-            id="contact_table"
-            class="table-striped text-center table-responsive-md" 
-            style="background-color:#eeeeee"
-            data-search="true"
-            toggle-pagination="true"
-            data-slide-pagination="server"
-            data-page-list="[10,25,50,100]"
-            data-click-to-select="true"
-            show-data-footer="true">
-            <thead>
-              <tr>
-                <th data-field="Name" data-sortable="true">
-                  <span class="body-text">Name</span>
-                </th>
-                <th data-field="E_mail" data-sortable="true">
-                  <span class="body-text">E-Mail</span>
-                </th>
-                <th data-field="Phone_Number" data-sortable="true">
-                  <span class="body-text">Phone Number</span>
-                </th>
-              </tr>
-            </thead>
-          </table>
       </div>
+      <div class="search">
+        <!--Search area centered with table-->
+        <div class="search-aligned">
+          <!--Search box-->
+          <div class="search-box">
+            <input type="text" id="search" name="search" placeholder="&#xF002; Search" class="search-input"/>
+          </div>
+          <!--Add entry button-->
+          <div class="add-entry">
+            <button class="add-btn" onclick="showAddModal()"><i class="fa fa-plus plus-icon"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone number</th>
+              <th class="icon-header"></th>
+            </tr>
+          </thead>
+          <!-- Entires injected in JS -->
+          <tbody id="tableBody">
+          </tbody>
+        </table>
+      </div>
+      <div class="nav-buttons">
 
-       <!-- Include jQuery and other required files for Bootstrap -->
-       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-      
- 
-       <!-- Include the JavaScript file for Bootstrap table -->
-       <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
- 
-       <!-- Include the file where the JSON data is stored -->
-       <script type="text/javascript" src="../js/contact_data.js"></script>
-       <script type="text/javascript">
-         $(document).ready(function () {
-           // Use the given data to create 
-           // the table and display it
-           $('table').bootstrapTable({
-             data: mydata,
-             columns: [ {},{},{},{
-                   field: 'operate',
-                   align: 'center',
-                   valign: 'middle',
-                   width: '100px',
-                   clickToSelect: false,
-                   formatter : function(value,row,index) {
-                     return '<button class=\'btn btn-primary\' onclick=\'editRow();\'>Edit</button> ';
-                   }
-             },{
-                   field: 'operate',
-                   align: 'center',
-                   valign: 'middle',
-                   width: '100px',
-                   clickToSelect: false,
-                   formatter : function(value,row,index) {
-                     return '<button class=\'btn btn-danger\' onclick=\'deleteRow();\'>Delete</button> ';
-                   }
-               }]               
-           });
-         });
-         // Parse the imported data as JSON
-         // and store it
-         var mydata = JSON.parse(contacts)
-       </script>
+      </div>
+      <div class="footer">
+
+      </div>
+    </div>
+
+    <!-- Add entry modal -->
+    <div class="add-modal">
+      <form class="add-modal-form" onsubmit="addEntry(); return false;">
+        <input id="addModalFirstName" placeholder="First Name" required/>
+        <input id="addModalLastName" placeholder="Last Name" required/>
+        <input id="addModalEmail" placeholder="Email" required/>
+        <input id="addModalPhone" placeholder="Phone number" required/>
+        <input type="submit">
+      </form>
+    </div>
+    <script src="../js/contact_data.js"></script>
   </body>
+
+
+
+<script>
+$(document).ready(function(){
+    $('#search').keypress(function(e){
+      if(e.keyCode==13)
+      doSearch();
+    });
+});
+</script>
 </html>
