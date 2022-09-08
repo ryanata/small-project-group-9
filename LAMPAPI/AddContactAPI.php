@@ -8,25 +8,23 @@
 	$userId = $inData["userId"];
 
 	// mySQL object
-	$conn = new mysqli("localhost", "root", "gr0upN1ne", "smallproject9");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "smallproject9");
 
 	// covering our ass from connection errors
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	}
-
 	else
 	{
 		// preparing a mySQL query
 		$stmt = $conn->prepare("INSERT into Contacts (UserID,FirstName,LastName,Address,PhoneNumber) VALUES(?,?,?,?,?)");
 		// binding parameters to mySQL query
-		$stmt->bind_param("ss", $userId, $first, $last, $address, $phone);
+		$stmt->bind_param("sssss", $userId, $first, $last, $address, $phone);
 		// sending query
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
 	}
 
 	function getRequestInfo()
