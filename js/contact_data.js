@@ -50,7 +50,7 @@ function doContact(newContact)
 	{
 		xhr.onreadystatechange = function()
 		{
-			if (this.readyState == 4 && this.status == 200)
+			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
                 console.log(jsonObject);
