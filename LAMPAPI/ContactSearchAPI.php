@@ -2,8 +2,8 @@
 
 	$inData = getRequestInfo();
 	
-	$searchResults = "";
 	$searchCount = 0;
+	$myArray = array();
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "smallproject9");
 	if ($conn->connect_error) 
@@ -13,21 +13,16 @@
 	else
 	{
 		// if adding lazy loading, select top 10 * instead of select *
-		$stmt = $conn->prepare("select TOP 10 * from Contacts where (FirstName LIKE ? OR LastName LIKE ? OR  Address LIKE ? OR PhoneNumber like ?) and UserID = ?");
-		$stmt->bind_param("sssss", $searchParam , $searchParam , $searchParam , $searchParam , $inData["userId"]);
+		$stmt = $conn->prepare("select * from Contacts where (FirstName LIKE ? OR LastName LIKE ? OR  Address LIKE ? OR PhoneNumber like ?) and UserID = ? limit 10");
 		$searchParam = "%" . $inData["search"] . "%";
+		$stmt->bind_param("sssss", $searchParam , $searchParam , $searchParam , $searchParam , $inData["userId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
-		returnWithInfo( "test" );
 		while($row = $result->fetch_assoc())
 		{
-			if( $searchCount > 0 )
-			{
-				$searchResults .= ",";
-			}
+			$myArray[] = $row;
 			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
 		}
 		
 		if( $searchCount == 0 )
@@ -36,7 +31,7 @@
 		}
 		else
 		{
-			returnWithInfo( $searchResults );
+			returnWithInfo( json_encode($myArray) );
 		}
 		
 		$stmt->close();

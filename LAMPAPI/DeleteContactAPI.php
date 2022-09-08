@@ -4,7 +4,7 @@
         $Id = $inData["Id"];
     
         // mySQL object
-        $conn = new mysqli("localhost", "root", "gr0upN1ne", "smallproject9");
+        $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "smallproject9");
     
         // covering our ass from connection errors
         if ($conn->connect_error) 
@@ -17,12 +17,11 @@
             // preparing a mySQL query
             $stmt = $conn->prepare("DELETE FROM Contacts WHERE Id = ?");
             // binding parameters to mySQL query
-            $stmt->bind_param("ss", $Id);
+            $stmt->bind_param("s", $Id);
             // sending query
             $stmt->execute();
             $stmt->close();
             $conn->close();
-            returnWithError("");
         }
     
         function getRequestInfo()
