@@ -1,5 +1,4 @@
-const urlBase = 'http://67.207.82.94/LAMPAPI';
-const extension = 'php';
+import { urlBase, extension } from './constants.js';
 
 let userId = 0;
 let firstName = "";
@@ -13,15 +12,13 @@ function doLogin()
 
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
 
 	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/Login.' + extension;
+	let url = urlBase + '/LoginAPI.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);

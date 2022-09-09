@@ -1,6 +1,18 @@
+import { urlBase, extension } from './constants.js';
+
 const USER_ID = sessionStorage.getItem('userID');
-const urlBase = 'http://67.207.82.94/LAMPAPI';
-const extension = 'php';
+
+// Create empty rows
+for (let i = 0; i < 10; i++) {
+    $("#tableBody").append(createRow("","",""));
+}
+
+// Event Listeners
+$(".add-btn").click(showAddModal);
+$('#search').keypress(doSearch());
+
+
+// FUNCTIONS
 
 // Creates a row
 function createRow(name, email, phone) {
@@ -36,6 +48,7 @@ function addEntry() {
 function showAddModal() {
     $(".add-modal").css("display", "initial");
 }
+
 // Deletes all ten rows
 function deleteRows() {
     $('#tableBody').empty();
@@ -70,14 +83,15 @@ function doContact(newContact)
 
 function doSearch()
 {
-	let search = document.getElementById("search").value;
-
-
-	let tmp = {search:search,userId:USER_ID};
+	const search = document.getElementById("search").value;
+    const tmp = { 
+        search: search, 
+        userId: USER_ID
+    };
 	
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/ContactSearchAPI.' + extension;
+	const url = urlBase + '/ContactSearchAPI.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -89,7 +103,7 @@ function doSearch()
 			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-                		console.log(jsonObject);
+                console.log(jsonObject);
 			}
 		};
 		xhr.send(jsonPayload);
@@ -100,8 +114,5 @@ function doSearch()
 	}
 }
 
-// Create empty rows
-for (let i = 0; i < 10; i++) {
-    $("#tableBody").append(createRow("","",""));
-}
+
 

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Javascript -->
+    <script type="module" src="../js/contact_data.js"></script>
   </head>
 
   <body>
@@ -35,7 +37,7 @@
           </div>
         <!--Add entry button-->
           <div class="add-entry">
-            <button class="add-btn" onclick="showAddModal()"><i class="fa fa-plus plus-icon"></i></button>
+            <button class="add-btn"><i class="fa fa-plus plus-icon"></i></button>
           </div>
       </div>
       <div class="table">
@@ -71,17 +73,5 @@
         <input type="submit">
       </form>
     </div>
-    <script src="../js/contact_data.js"></script>
   </body>
-
-
-
-<script>
-$(document).ready(function(){
-    $('#search').keypress(function(e){
-      if(e.keyCode==13)
-      doSearch();
-    });
-});
-</script>
 </html>
