@@ -37,7 +37,7 @@ function dosignup()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
-				error = jsonObject.error;
+				const error = jsonObject.error;
 				
 				if( userId < 1 || error.length != 0)
 				{
@@ -46,7 +46,7 @@ function dosignup()
 				}
 				doEmail(jsonPayload);
 				saveCookie();
-				window.location.href = "login.html";
+                window.location.href = "contacts-sheet.html";
 			}
 		};
 		xhr.send(jsonPayload);
