@@ -31,14 +31,15 @@
 		{
 			
 			// prepare and bind
-			$stmt = $conn->prepare("INSERT INTO Users (FirstName,LastName,Login,Password) VALUES (?, ?, ?, ?)");
-			$stmt->bind_param("ssss", $firstname, $lastname, $login, $password);
+			$stmt = $conn->prepare("INSERT INTO Users (FirstName,LastName,Login,Password,email) VALUES (?, ?, ?, ?, ?)");
+			$stmt->bind_param("sssss", $firstname, $lastname, $login, $password, $email);
 
 			// set parameters and execute
 			$firstname = $inData["firstname"];
 			$lastname = $inData["lastname"];
 			$login = $inData["login"];
 			$password= $inData["password"];
+			$email= $inData["email"];
 			
 			$stmt->execute();
 	
