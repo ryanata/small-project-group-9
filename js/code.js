@@ -68,11 +68,12 @@ function dosignup()
 	let password = document.getElementById("loginPassword").value;
 	let lastname = document.getElementById("LastNameSignup").value;
 	let firstname = document.getElementById("FirstNameSignup").value;
+	let email = document.getElementById("email").value;
 //	var hash = md5( password );
 
 	document.getElementById("registerResult").innerHTML = "";
 
-	let tmp = {login:login,password:password,firstname:firstname,lastname:lastname};
+	let tmp = {login:login,password:password,firstname:firstname,lastname:lastname, email:email};
 //	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 
