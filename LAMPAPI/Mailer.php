@@ -5,11 +5,10 @@
   require '../PHPMailer/src/PHPMailer.php';
   require '../PHPMailer/src/SMTP.php';
 
-  $inData = getRequestInfo();
-	
   $mail = new PHPMailer();
   $mail->IsSMTP();
-
+  $inData = getRequestInfo();
+  
   $mail->SMTPDebug  = 0;  
   $mail->SMTPAuth   = TRUE;
   $mail->SMTPSecure = "tls";
@@ -20,7 +19,6 @@
 
   $mail->IsHTML(true);
   $mail->AddAddress($inData["email"], "recipient-name");
-  
   $mail->SetFrom("smallproject9cop@gmail.com", "test");
   $mail->Subject = "Test is Test Email sent via Gmail SMTP Server using PHP Mailer";
   $content = "<b>This is a Test Email sent via Gmail SMTP Server using PHP mailer class.</b>";
@@ -32,4 +30,11 @@
   } else {
     echo "Email sent successfully";
   }
+  
+  
+  	function getRequestInfo()
+	{
+		return json_decode(file_get_contents('php://input'), true);
+	}
 ?>
+
