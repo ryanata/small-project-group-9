@@ -97,6 +97,7 @@ function dosignup()
 					document.getElementById("registerResult").innerHTML = "An existing user has that login already.";
 					return;
 				}
+				doEmail(jsonPayload);
 				saveCookie();
 				window.location.href = "login.html";
 			}
@@ -109,6 +110,31 @@ function dosignup()
 	}
 
 }
+
+
+function doEmail(jsonPayload)
+{
+
+	let url = urlBase + '/Mailer.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+	}
+}
+
 
 function saveCookie()
 {
