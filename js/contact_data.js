@@ -9,8 +9,12 @@ function createRow(name, email, phone) {
     <td>${email}</td>
     <td>${phone}</td>
     <td>
-      <span class="material-icons">edit</span>
-      <span class="material-icons">delete</span>
+      <button id="${name}-edit" onclick="doEdit()" class="contact-button">
+	  	<i class="material-icons" style="color:#D5D5D5; margin-top:3px;">edit</i>
+	  </button>
+      <button id="${name}-delete" onclick="doDelete()" class="contact-button">
+	    <i class="material-icons" style="color:#D5D5D5; margin-top:3px;">delete</i>
+	  </button>
     </td>
     </tr>`;
 }
