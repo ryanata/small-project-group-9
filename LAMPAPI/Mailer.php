@@ -5,6 +5,8 @@
   require '../PHPMailer/src/PHPMailer.php';
   require '../PHPMailer/src/SMTP.php';
 
+  $inData = getRequestInfo();
+	
   $mail = new PHPMailer();
   $mail->IsSMTP();
 
@@ -17,7 +19,8 @@
   $mail->Password   = "ophnysvypxnasbbc";
 
   $mail->IsHTML(true);
-  $mail->AddAddress("smokeice593@gmail.com", "recipient-name");
+  $mail->AddAddress($inData["email"], "recipient-name");
+  
   $mail->SetFrom("smallproject9cop@gmail.com", "test");
   $mail->Subject = "Test is Test Email sent via Gmail SMTP Server using PHP Mailer";
   $content = "<b>This is a Test Email sent via Gmail SMTP Server using PHP mailer class.</b>";
