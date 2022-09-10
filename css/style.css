@@ -300,3 +300,6 @@ body {
     padding-left: calc(100% - 34px)
 }
 
+.error-message {
+    color: red;
+}
