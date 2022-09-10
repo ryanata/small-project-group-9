@@ -1,14 +1,15 @@
 import { urlBase, extension } from './constants.js';
 
 const USER_ID = sessionStorage.getItem('userID');
+const ENTRIES_PER_PAGE = 10;
 let contacts = [];
 
 // Event Listeners
 $(".add-btn").click(showAddModal);
 $(".add-modal-form").submit(() => {addEntry(); return false;})
-$('#search').keypress(doSearch());
+$('#search').on('input', () => {doSearch()});
+doSearch();
 
-for (let i = 0; i < 10; i++) createRow("Tim");
 // FUNCTIONS
 
 // Creates a row
@@ -58,6 +59,23 @@ function deleteRows() {
     $('#tableBody').empty();
 }
 
+// Adds ten rows for each page
+function addRows(jsonContacts, numRows) {
+	for (let i = 0; i < numRows; i++) {
+		const entry = jsonContacts[i]
+		const name = entry.FirstName + entry.LastName;
+					
+		createRow(name, entry.Address, entry.PhoneNumber);
+		contacts.push(entry);
+	}
+	for (let leftover = 0; leftover < ENTRIES_PER_PAGE - numRows; leftover++) {
+		createRow();
+	}
+}
+
+
+// API CALLS
+
 function doContact(newContact)
 {
 	let jsonPayload = JSON.stringify( newContact );
@@ -96,10 +114,12 @@ function doSearch()
 	let jsonPayload = JSON.stringify( tmp );
 
 	const url = urlBase + '/ContactSearchAPI.' + extension;
-
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	deleteRows();
+	let jsonObjects = null;
+	let numberOfObjects = 0;
 	try
 	{
 		xhr.onreadystatechange = function()
@@ -107,12 +127,10 @@ function doSearch()
 			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
 			{
 				const jsonObject = JSON.parse( xhr.responseText );
-                Object.keys(jsonObject.results[0]).forEach((idx)=> {
-					const entry = jsonObject.results[0][idx];
-					const name = entry.FirstName + entry.LastName;
-					createRow(name, entry.Address, entry.PhoneNumber);
-					contacts.push(entry);
-				});
+				if (jsonObject["error"] != "No Records Found") {
+					jsonObjects = jsonObject.results[0];
+					numberOfObjects = jsonObject.results[0].length;
+				}
 			}
 		};
 		xhr.send(jsonPayload);
@@ -121,6 +139,8 @@ function doSearch()
 	{
 		console.log(err);
 	}
+
+	addRows(jsonObjects, numberOfObjects)
 }
 
 

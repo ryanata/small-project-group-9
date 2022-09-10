@@ -12,6 +12,7 @@ body {
     grid-template-rows: 20fr 9fr 43fr 14fr 14fr;
     grid-row-gap: 0.25rem;
     min-width: 0;
+    height: 100vh;
 }
 
 /* Header */
@@ -131,7 +132,6 @@ table {
     width: calc(100% - 100px);
     padding-left: 50px;
     padding-right: 50px;
-    font-size: 2vw;  
     table-layout: fixed;
 }
 
@@ -146,28 +146,30 @@ th {
 
 tr:nth-child(even) {
     background-color: #f4f6fb;;
+    overflow-x: scroll;
 }
 
 td {
     font-weight: bold;
     padding: 0rem 2rem;
+    overflow-x: scroll;
 }
 
 .icon-header {
     width: 3.3rem;
 }
 
-@media screen and (max-width: 0px) {
+@media screen and (max-width: 700px) {
+    table, th, td {
+        border: 1px solid;
+    }
+    
     th {
         padding: 0.5rem 0rem;
     }
 
     td { 
         padding: 0rem 0rem;
-    }
-
-    table {
-        font-size: 2vw;
     }
 }
 
@@ -236,6 +238,13 @@ td {
 }
 
 .footer {
+    position: relative;
     padding-left: 15px;
     padding-left: calc(100px / 2);
+}
+
+.footer-img {
+    position: absolute;
+    bottom: 0;
+    left: 3%;
 }
