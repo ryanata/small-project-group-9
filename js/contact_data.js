@@ -5,25 +5,32 @@ let contacts = [];
 
 // Event Listeners
 $(".add-btn").click(showAddModal);
+$(".add-modal-form").submit(() => {addEntry(); return false;})
 $('#search').keypress(doSearch());
 
-
+for (let i = 0; i < 10; i++) createRow("Tim");
 // FUNCTIONS
 
 // Creates a row
-function createRow(name, email, phone) {
+function createRow(name = "", email = "", phone = "") {
+	let tdIcon = `<td class="contact-btn-td">
+	<div class="contact-btn-container">
+	<button id="${name}-edit" class="contact-button">
+		<i class="material-icons" style="color: #1f1f1f; margin-top:3px;">edit</i>
+	</button>
+	<button id="${name}-delete" class="contact-button">
+		<i class="material-icons" style="color: #1f1f1f; margin-top:3px;">delete</i>
+	</button>
+	</div>
+  	</td>`;
+	if ((name.length + email.length + phone.length) == 0) {
+		tdIcon = "<td></td>";
+	}
     $("#tableBody").append(`<tr>
     <td>${name}</td>
     <td>${email}</td>
     <td>${phone}</td>
-    <td>
-      <button id="${name}-edit" onclick="doEdit()" class="contact-button">
-	  	<i class="material-icons" style="color:#D5D5D5; margin-top:3px;">edit</i>
-	  </button>
-      <button id="${name}-delete" onclick="doDelete()" class="contact-button">
-	    <i class="material-icons" style="color:#D5D5D5; margin-top:3px;">delete</i>
-	  </button>
-    </td>
+    ${tdIcon}
     </tr>`);
 }
 
@@ -39,6 +46,7 @@ function addEntry() {
     console.log(newContact);
     doContact(newContact);
     $(".add-modal").css("display", "none");
+	doSearch();
 }
 
 function showAddModal() {

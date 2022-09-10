@@ -37,7 +37,7 @@
           </div>
         <!--Add entry button-->
           <div class="add-entry">
-            <button class="add-btn"><i class="fa fa-plus plus-icon"></i></button>
+            <button class="add-btn"><img class="plus-icon" src="../images/PlusIcon.svg"></i></button>
           </div>
       </div>
       <div class="table">
@@ -46,7 +46,7 @@
             <tr>
               <th>Name</th>
               <th>Email</th>
-              <th>Phone number</th>
+              <th>Phone Number</th>
               <th class="icon-header"></th>
             </tr>
           </thead>
@@ -56,16 +56,21 @@
         </table>
       </div>
       <div class="nav-buttons">
-
+        <div class="left-btn-container">
+          <button class="left-btn"><img class="arrow" src="../images/ArrowLeft.svg"></img></button>
+        </div>
+        <div class="right-btn-container">
+          <button class="right-btn"><img class="arrow" src="../images/ArrowRight.svg"></img></button>
+        </div>
       </div>
       <div class="footer">
-
+        <img src="../images/FooterLogo.svg"></img>
       </div>
     </div>
 
     <!-- Add entry modal -->
     <div class="add-modal">
-      <form class="add-modal-form" onsubmit="addEntry(); return false;">
+      <form class="add-modal-form">
         <input id="addModalFirstName" placeholder="First Name" required/>
         <input id="addModalLastName" placeholder="Last Name" required/>
         <input id="addModalEmail" placeholder="Email" required/>

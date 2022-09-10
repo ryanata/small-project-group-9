@@ -9,9 +9,9 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 30fr 9fr 43fr 9fr 9fr;
-    height: 100vh;
+    grid-template-rows: 20fr 9fr 43fr 14fr 14fr;
     grid-row-gap: 0.25rem;
+    min-width: 0;
 }
 
 /* Header */
@@ -55,12 +55,11 @@ body {
 
 /* Search area */
 .search {
-    display: relative;
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: calc(100% - 100px);
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: calc(100px / 2);
 }
 
 .search-aligned {
@@ -95,19 +94,14 @@ body {
 .add-btn {
     border-radius: 16px;
     float: right;
-    border-width: 1px;
-    height: 40px;
-    width: 100%;
+    height: 42px;
+    width: 70%;
+    border: none;
     background-color: #386641;
 }
 
 .add-btn:hover {
     background-color: #368707;
-}
-
-.plus-icon {
-    color: white;
-
 }
 
 /* prevents text resizing when viewport resizes
@@ -118,9 +112,6 @@ wouldn't work until I put the font-size in media query*/
     }
     .plus-icon {
         font-size: 25px !important;
-    }
-    tr {
-        font-size: 20px;
     }
 }
 
@@ -140,7 +131,7 @@ table {
     width: calc(100% - 100px);
     padding-left: 50px;
     padding-right: 50px;
-    font-size: 1.2vw;  
+    font-size: 2vw;  
     table-layout: fixed;
 }
 
@@ -194,17 +185,57 @@ td {
     box-shadow: 0 5px 10px #e1e5ee;
 }
 
+.contact-btn-td {
+    padding-right: 0;
+    padding-left: 0;
+}
+.contact-btn-container { 
+    display: flex;
+    justify-content: space-evenly;
+
+}
 .contact-button {
-    margin-top: 3px;
-    margin-bottom: 3px;
-    position: relative;
-    border-radius: 16px;
-    border-width: 1px;
-    height: 70%;
-    width: 70%;
-    background-color: #386641;
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
 }
 
-.contact-button:hover {
-    background-color: #368707;
+.contact-button *:hover {
+    fill: #368707;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 100px);
+    padding-left: calc(100px / 2);
+}
+
+.arrow {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.right-btn {
+    border-radius: 4px;
+    background-color: #386641;
+    height: 45px;
+    width: 45px;
+    border: none;
+}
+
+.left-btn {
+    border-radius: 4px;
+    background-color: #386641;
+    height: 45px;
+    width: 45px;
+    border: none;
+}
+
+.footer {
+    padding-left: 15px;
+    padding-left: calc(100px / 2);
 }
