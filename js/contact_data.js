@@ -1,11 +1,7 @@
 import { urlBase, extension } from './constants.js';
 
 const USER_ID = sessionStorage.getItem('userID');
-
-// Create empty rows
-for (let i = 0; i < 10; i++) {
-    $("#tableBody").append(createRow("","",""));
-}
+let contacts = [];
 
 // Event Listeners
 $(".add-btn").click(showAddModal);
@@ -16,7 +12,7 @@ $('#search').keypress(doSearch());
 
 // Creates a row
 function createRow(name, email, phone) {
-    return `<tr>
+    $("#tableBody").append(`<tr>
     <td>${name}</td>
     <td>${email}</td>
     <td>${phone}</td>
@@ -28,7 +24,7 @@ function createRow(name, email, phone) {
 	    <i class="material-icons" style="color:#D5D5D5; margin-top:3px;">delete</i>
 	  </button>
     </td>
-    </tr>`;
+    </tr>`);
 }
 
 // Adds an entry to the database
@@ -102,8 +98,13 @@ function doSearch()
 		{
 			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
 			{
-				let jsonObject = JSON.parse( xhr.responseText );
-                console.log(jsonObject);
+				const jsonObject = JSON.parse( xhr.responseText );
+                Object.keys(jsonObject.results[0]).forEach((idx)=> {
+					const entry = jsonObject.results[0][idx];
+					const name = entry.FirstName + entry.LastName;
+					createRow(name, entry.Address, entry.PhoneNumber);
+					contacts.push(entry);
+				});
 			}
 		};
 		xhr.send(jsonPayload);
