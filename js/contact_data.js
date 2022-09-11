@@ -32,7 +32,7 @@ $('.left-btn').prop('disabled', true);
 $('.left-btn').on('click', () => { previousPage(); });
 $('.right-btn').on('click', () => { nextPage(); });
 $('#search').on('input', () => {newSearch()});
-// 
+$('.logout').click(() => {doLogout()});
 $('.table').on('click', "button", (event) => { 
 	if (event.currentTarget.id == 'edit') {
 		const contact_idx = event.currentTarget.name;
@@ -392,4 +392,10 @@ function previousPage() {
 function noNext() {
 	hasNext[currentPage] = false;
 	$('.right-btn').prop('disabled', true);
+}
+
+function doLogout()
+{
+	sessionStorage.clear();
+	window.location.href = "login.html";
 }
