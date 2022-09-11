@@ -173,14 +173,19 @@ td {
     }
 }
 
-/* Add entry modal */
-.add-modal {
-    display: none;
+/* Shared modal properties */
+
+#modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     background-color: #386641;
+    transform: translate(-50%, -50%);
+}
+
+/* Add entry modal */
+.add-modal {
+    display: none;
     padding: 20px;
     border-radius: 10px;
     border-width: 10px;
@@ -256,6 +261,12 @@ td {
 
 .contact-button *:hover {
     fill: #368707;
+}
+
+.edit-modal {
+    display: none;
+    width: 70%;
+    height: 70%;
 }
 
 .nav-buttons {

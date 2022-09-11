@@ -2,30 +2,45 @@ import { urlBase, extension } from './constants.js';
 
 const USER_ID = sessionStorage.getItem('userID');
 const ENTRIES_PER_PAGE = 10;
-let contacts = [];
+// An object that contains all contacts loaded
+let allPages = {1: new Array(10).fill(null)};
+// What contact page we're on
+let currentPage = 1;
+// Most recently accessed i
 
 // Event Listeners
 $(".add-btn").click(showAddModal);
 $(".add-modal-form").submit(() => {addEntry(); return false;})
+$(".edit-modal-form").submit((event) => {editEntry(); return false;})
 $(".close").click(() => {$(".add-modal").css("display", "none");});
 $('#search').on('input', () => {populateSearchResults()});
+// 
+$('.table').on('click', "button", (event) => { 
+	if (event.currentTarget.id == 'edit') {
+		const contact_idx = event.currentTarget.name;
+		const contact_obj = allPages[currentPage][contact_idx];
+		$('#editModalSubmit').data("id", contact_obj.ID);
+		showEditModal(contact_obj.FirstName, contact_obj.LastName, contact_obj.Address, contact_obj.PhoneNumber);
+	} 
+});
+
 populateSearchResults();
 
 // FUNCTIONS
 
 // Creates a row
-function createRow(name = "&#10240;", email = "", phone = "") {
+function createRow(name = "&#10240;", email = "", phone = "", idx="") {
 	let tdIcon = `<td class="contact-btn-td">
 	<div class="contact-btn-container">
-	<button id="${name}-edit" class="contact-button">
+	<button id="edit" name="${idx}" class="contact-button">
 		<i class="material-icons" style="color: #1f1f1f; margin-top:3px;">edit</i>
 	</button>
-	<button id="${name}-delete" class="contact-button">
+	<button id="delete" name="${idx}" class="contact-button">
 		<i class="material-icons" style="color: #1f1f1f; margin-top:3px;">delete</i>
 	</button>
 	</div>
   	</td>`;
-	if ((email.length + phone.length) == 0) {
+	if (idx === "") {
 		tdIcon = "<td></td>";
 	}
     $("#tableBody").append(`<tr>
@@ -49,14 +64,33 @@ function addEntry() {
     $(".add-modal").css("display", "none");
 }
 
+function editEntry() {
+    const newContact = {
+        firstname: $('#editModalFirstName').val(),
+        lastname: $('#editModalLastName').val(),
+        phone: $('#editModalPhone').val(),
+        address: $('#editModalEmail').val(),
+		Id: $('#editModalSubmit').data("id")
+    };
+	console.log(newContact);
+    $(".edit-modal").css("display", "none");
+}
+
 function showAddModal() {
     $(".add-modal").css("display", "initial");
+}
+
+function showEditModal(firstName, lastName, email, phone) {
+	$(".edit-modal").css("display", "initial");
+	$("#editModalFirstName").val(firstName);
+	$("#editModalLastName").val(lastName);
+	$("#editModalEmail").val(email);
+	$("#editModalPhone").val(phone);
 }
 
 // Deletes all ten rows
 function deleteRows() {
     $('#tableBody').empty();
-	contacts = [];
 }
 
 // Takes JSON data and creates rows
@@ -65,14 +99,19 @@ function addRows(jsonContacts, numRows) {
 		const entry = jsonContacts[i]
 		const name = entry.FirstName + " " + entry.LastName;
 					
-		createRow(name, entry.Address, entry.PhoneNumber);
-		contacts.push(entry);
+		allPages[currentPage][i] = entry;
+		createRow(name, entry.Address, entry.PhoneNumber, i);
 	}
 	for (let leftover = 0; leftover < ENTRIES_PER_PAGE - numRows; leftover++) {
 		createRow();
 	}
 }
 
+// Starts back on page 1 and clean state due to new search
+function resetPages() {
+	allPages = {1: new Array(10).fill(null)};
+	currentPage = 1;
+}
 
 // API CALLS
 
@@ -126,6 +165,9 @@ function doSearch()
 		xhr.onreadystatechange = function()
 		{
 			deleteRows();
+			// Get a clean slate if not already (Reduce redundant calls)
+			if (allPages[1][0] != null) resetPages();
+
 			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
 			{
 				const jsonObject = JSON.parse( xhr.responseText );
@@ -148,6 +190,7 @@ function doSearch()
 	{
 		console.log(err);
 		deleteRows();
+		resetPages();
 		addRows(null, 0);
 	}
 }
