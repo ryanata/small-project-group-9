@@ -7,7 +7,7 @@ let contacts = [];
 // Event Listeners
 $(".add-btn").click(showAddModal);
 $(".add-modal-form").submit(() => {addEntry(); return false;})
-$(".add-modal").click(() => {$(".add-modal").css("display", "none");});
+$(".close").click(() => {$(".add-modal").css("display", "none");});
 $('#search').on('input', () => {populateSearchResults()});
 populateSearchResults();
 
