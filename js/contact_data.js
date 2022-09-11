@@ -91,6 +91,7 @@ function editEntry() {
         address: $('#editModalEmail').val(),
 		Id: $('#editModalSubmit').data("id")
     };
+	doEditContact(newContact);
 	console.log(newContact);
     $(".edit-modal").css("display", "none");
 }
@@ -132,11 +133,39 @@ function addRows() {
 	use of promises.
 */
 
+// ADD CONTACT
 function doContact(newContact)
 {
 	let jsonPayload = JSON.stringify( newContact );
 
 	let url = urlBase + '/AddContactAPI.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				doSearch();
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		console.log(err);
+	}
+}
+
+// EDIT CONTACT
+function doEditContact(newContact)
+{
+	let jsonPayload = JSON.stringify( newContact );
+
+	let url = urlBase + '/UpdateContactAPI.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
