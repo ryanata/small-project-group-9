@@ -99,6 +99,7 @@ body {
     width: 70%;
     border: none;
     background-color: #386641;
+    cursor: pointer;
 }
 
 .add-btn:hover {
@@ -226,7 +227,11 @@ td {
     font-weight: bold;
     border-color: rgb(71, 89, 0);
     border-radius: 12px;
+    cursor: pointer;
 }
+    .submit-button:hover {
+        background-color: #f5ffdc;
+    }
 
 .close {
     float: right;
@@ -240,6 +245,7 @@ td {
     border: none;
     opacity: 0.7;
     color: rgb(255, 255, 255);
+    cursor: pointer;
   }
   .close:hover {
     opacity: 1;
@@ -263,6 +269,8 @@ td {
 
 .contact-button *:hover {
     fill: #368707;
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 .nav-buttons {
@@ -309,4 +317,29 @@ button:disabled {
     position: absolute;
     bottom: 0;
     left: 3%;
+}
+
+.greeting-container {
+    display: block;
+    margin: 50px 50px 0px 50px;
+    float: right;
+}
+
+.greeting {
+    display: inline;
+    font-size: 17px;
+}
+
+.logout {
+    border: none;
+    background: none;
+    color: blue;
+    font-size: 17px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: blue;
+    cursor: pointer;
+}
+
+.logout:hover {
+    text-decoration: underline;
 }

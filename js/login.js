@@ -66,6 +66,7 @@ function saveCookie()
 	date.setTime(date.getTime()+(minutes*60*1000));
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 	sessionStorage.setItem('userID', userId);
+	sessionStorage.setItem('firstName', firstName);
 }
 
 function readCookie()

@@ -7,13 +7,15 @@ import { urlBase, extension } from './constants.js';
 	Important variables that will be utilized throughout this file
 */
 const USER_ID = sessionStorage.getItem('userID');
+const FIRST_NAME = sessionStorage.getItem('firstName');
 const ENTRIES_PER_PAGE = 10;
 // An object that contains all contacts loaded
 let allPages = {1: new Array(10).fill(null)};
 let hasNext = {1: true};
 // What contact page we're on
 let currentPage = 1;
-
+// Greeting paragraph
+let greetingMessage = document.getElementById("greeting-message");
 
 /*
 	Event Listeners
@@ -39,6 +41,9 @@ $('.table').on('click', "button", (event) => {
 		showEditModal(contact_obj.FirstName, contact_obj.LastName, contact_obj.Address, contact_obj.PhoneNumber);
 	} 
 });
+
+// Build greeting message using user's first name
+greetingMessage.innerText = sessionStorage.getItem('firstName') + "!";
 
 newSearch();
 

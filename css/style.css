@@ -107,6 +107,7 @@ body {
     font-weight: bold;
     font-size: 24px;
     color: white;
+    cursor: pointer;
 }
 
 .login-button:hover {
@@ -126,6 +127,10 @@ body {
     font-size: 20px;
     line-height: 27px;
     color: blue;
+}
+
+.signup-prompt-butt:hover {
+    text-decoration: underline;
 }
 
 .sign-up-container {
@@ -173,6 +178,7 @@ body {
     font-weight: bold;
     font-size: 24px;
     color: white;
+    cursor: pointer;
 }
 
 .sign-up-button:hover {
@@ -192,6 +198,10 @@ body {
     font-size: 20px;
     line-height: 27px;
     color: blue;
+}
+
+.login-prompt-butt:hover {
+    text-decoration: underline;
 }
 
 .sign-up-spacer {
