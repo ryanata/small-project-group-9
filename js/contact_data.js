@@ -24,7 +24,8 @@ let currentPage = 1;
 $(".add-btn").click(showAddModal);
 $("#add-modal-form").submit(() => {addEntry(); return false;})
 $("#edit-modal-form").submit((event) => {editEntry(); return false;})
-$(".close").click(() => {$("#add-modal").css("display", "none");});
+$("#close-add").click(() => {$("#add-modal").css("display", "none");});
+$("#close-edit").click(() => {$("#edit-modal").css("display", "none");});
 $('.left-btn').prop('disabled', true);
 $('.left-btn').on('click', () => { previousPage(); });
 $('.right-btn').on('click', () => { nextPage(); });
