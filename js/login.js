@@ -5,12 +5,23 @@ let firstName = "";
 let lastName = "";
 
 // Event listeners
-$('.login-button').click(() => {doLogin()});
+$('.login-button').click(function(e) {
+	if (document.getElementById("loginName").value.length >= 1 &&
+		document.getElementById("loginPassword").value.length >= 1)
+	{
+		doLogin();
+	}
+	
+});
 
 $(document).keypress(function(e) {
     if(e.which == 13) 
 	{
-		doLogin();
+		if (document.getElementById("loginName").value.length >= 1 &&
+			document.getElementById("loginPassword").value.length >= 1)
+		{
+			doLogin();
+		}
 	}
 });
 

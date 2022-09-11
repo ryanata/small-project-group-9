@@ -5,12 +5,28 @@ let firstName = "";
 let lastName = "";
 
 // Event Listeners
-$('.sign-up-button').click(() => {dosignup()});
+$('.sign-up-button').click(function(e) {
+	if (document.getElementById("FirstNameSignup").value.length >= 1 &&
+		document.getElementById("LastNameSignup").value.length >= 1 &&
+		document.getElementById("email").value.length >= 1 &&
+		document.getElementById("loginName").value.length >= 1 &&
+		document.getElementById("loginPassword").value.length >= 1)
+	{
+		dosignup();
+	}
+});
 
 $(document).keypress(function(e) {
     if(e.which == 13) 
 	{
-		dosignup();
+		if (document.getElementById("FirstNameSignup").value.length >= 1 &&
+			document.getElementById("LastNameSignup").value.length >= 1 &&
+			document.getElementById("email").value.length >= 1 &&
+			document.getElementById("loginName").value.length >= 1 &&
+			document.getElementById("loginPassword").value.length >= 1)
+		{
+			dosignup();
+		}
 	}
 });
 
