@@ -181,8 +181,10 @@ td {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #386641;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
+    border-width: 10px;
+    border: black;
     box-shadow: 0 5px 10px #e1e5ee;
 }
 
@@ -199,6 +201,7 @@ td {
 
 .add-modal hr {
     margin-bottom: 25px;
+    color: white;
 }
 
 .add-modal-form input {
@@ -210,34 +213,29 @@ td {
 .submit-button {
     display: block;
     margin: 10px auto auto auto;
-    width: 200px;
+    width: 160px;
     background-color: #E3F0C3;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
+    border-color: rgb(71, 89, 0);
+    border-radius: 12px;
 }
 
 .close {
+    float: right;
     right: 32px;
     top: 32px;
     width: 32px;
     height: 32px;
     opacity: 0.3;
+    font-size: 30px;
+    background-color:#386641;
+    border: none;
+    opacity: 0.7;
+    color: rgb(255, 255, 255);
   }
   .close:hover {
     opacity: 1;
-  }
-  .close:before, .close:after {
-    left: 15px;
-    content: ' ';
-    height: 33px;
-    width: 2px;
-    background-color: #333;
-  }
-  .close:before {
-    transform: rotate(45deg);
-  }
-  .close:after {
-    transform: rotate(-45deg);
   }
 
 .contact-btn-td {

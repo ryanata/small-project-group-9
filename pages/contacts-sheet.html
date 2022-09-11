@@ -73,11 +73,13 @@
     </div>
 
     <!-- Add entry modal -->
-    <div class="add-modal">
-      <button type="button" class="close" data-dismiss="add-modal">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <span class="add-modal-title">Add contact</span>
+    <div class="add-modal" id="modal">
+      <span class="add-modal-title">Add contact
+        <button type="button" class="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </span>
+      
       <hr>
       <form class="add-modal-form">
         <input id="addModalFirstName" placeholder="First Name" required/>
