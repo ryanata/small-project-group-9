@@ -73,15 +73,14 @@
     </div>
 
     <!-- Add entry modal -->
-    <div class="add-modal" id="modal">
-      <span class="add-modal-title">Add contact
+    <div class="modal" id="modal">
+      <span class="modal-title">Add contact
         <button type="button" class="close">
           <span aria-hidden="true">&times;</span>
         </button>
       </span>
-      
       <hr>
-      <form class="add-modal-form">
+      <form class="modal-form">
         <input id="addModalFirstName" placeholder="First Name" required/>
         <input id="addModalLastName" placeholder="Last Name" required/>
         <input id="addModalEmail" placeholder="Email" required/>
@@ -93,8 +92,14 @@
     </div>
 
     <!-- Edit modal -->
-    <div class="edit-modal" id="modal">
-      <form class="edit-modal-form">
+    <div class="modal" id="modal">
+      <span class="modal-title">Edit contact
+        <button type="button" class="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </span>
+      <hr>
+      <form class="modal-form">
         <input id="editModalFirstName" placeholder="First Name" required/>
         <input id="editModalLastName" placeholder="Last Name" required/>
         <input id="editModalEmail" placeholder="Email" required/>

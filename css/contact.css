@@ -184,7 +184,7 @@ td {
 }
 
 /* Add entry modal */
-.add-modal {
+.modal {
     display: none;
     padding: 20px;
     border-radius: 10px;
@@ -193,7 +193,7 @@ td {
     box-shadow: 0 5px 10px #e1e5ee;
 }
 
-.add-modal-title {
+.modal-title {
     display: block;
     margin: auto;
     padding-bottom: 5px;
@@ -204,12 +204,12 @@ td {
     font-size: 24px;
 }
 
-.add-modal hr {
+.modal hr {
     margin-bottom: 25px;
     color: white;
 }
 
-.add-modal-form input {
+.modal-form input {
     display: block;
     padding: 5px;
     margin: 10px auto 20px auto;
