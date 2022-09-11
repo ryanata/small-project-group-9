@@ -299,6 +299,10 @@ td {
     border: none;
 }
 
+button:disabled {
+    opacity: 0.3;
+}
+
 .footer {
     position: relative;
     padding-left: 15px;

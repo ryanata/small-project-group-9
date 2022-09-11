@@ -1,19 +1,34 @@
 import { urlBase, extension } from './constants.js';
 
+
+/*
+	Properties
+	-------------------------
+	Important variables that will be utilized throughout this file
+*/
 const USER_ID = sessionStorage.getItem('userID');
 const ENTRIES_PER_PAGE = 10;
 // An object that contains all contacts loaded
 let allPages = {1: new Array(10).fill(null)};
+let hasNext = {1: true};
 // What contact page we're on
 let currentPage = 1;
-// Most recently accessed i
 
-// Event Listeners
+
+/*
+	Event Listeners
+	------------------------------
+	Attach all event listeners here for consistency. Do not put an event listener
+	in the HTML. 
+*/
 $(".add-btn").click(showAddModal);
 $(".add-modal-form").submit(() => {addEntry(); return false;})
 $(".edit-modal-form").submit((event) => {editEntry(); return false;})
 $(".close").click(() => {$(".add-modal").css("display", "none");});
-$('#search').on('input', () => {populateSearchResults()});
+$('.left-btn').prop('disabled', true);
+$('.left-btn').on('click', () => { previousPage(); });
+$('.right-btn').on('click', () => { nextPage(); });
+$('#search').on('input', () => {newSearch()});
 // 
 $('.table').on('click', "button", (event) => { 
 	if (event.currentTarget.id == 'edit') {
@@ -24,9 +39,13 @@ $('.table').on('click', "button", (event) => {
 	} 
 });
 
-populateSearchResults();
+newSearch();
 
-// FUNCTIONS
+/*
+	Dynamic DOM Functions
+	------------------------------
+	All these functions add/edit the DOM dynamically during runtime.
+*/
 
 // Creates a row
 function createRow(name = "&#10240;", email = "", phone = "", idx="") {
@@ -93,27 +112,25 @@ function deleteRows() {
     $('#tableBody').empty();
 }
 
-// Takes JSON data and creates rows
-function addRows(jsonContacts, numRows) {
-	for (let i = 0; i < numRows; i++) {
-		const entry = jsonContacts[i]
-		const name = entry.FirstName + " " + entry.LastName;
-					
-		allPages[currentPage][i] = entry;
-		createRow(name, entry.Address, entry.PhoneNumber, i);
-	}
-	for (let leftover = 0; leftover < ENTRIES_PER_PAGE - numRows; leftover++) {
-		createRow();
+// Adds the rows saved in allPages[currentPage] to DOM
+function addRows() {
+	for (let i = 0; i < ENTRIES_PER_PAGE; i++) {
+		const entry = allPages[currentPage][i];
+		if (entry != null) {
+			createRow(entry.name, entry.Address, entry.PhoneNumber, i);
+		} else {
+			createRow();
+		}
 	}
 }
 
-// Starts back on page 1 and clean state due to new search
-function resetPages() {
-	allPages = {1: new Array(10).fill(null)};
-	currentPage = 1;
-}
-
-// API CALLS
+/*
+	API Calls
+	------------------------------
+	All these functions are used to make API calls. Use wrapper
+	functions if there is particular logic you want to pass to prevent
+	use of promises.
+*/
 
 function doContact(newContact)
 {
@@ -146,7 +163,8 @@ function doSearch()
 	const search = document.getElementById("search").value;
     const tmp = { 
         search: search, 
-        userId: USER_ID
+        userId: USER_ID,
+		offset: 0
     };
 	
 	let jsonPayload = JSON.stringify( tmp );
@@ -155,8 +173,6 @@ function doSearch()
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	let jsonObjects = null;
-	let numberOfObjects = 0;
 	// This code leverages event listeners which means that two calls can be firing at the same time
 	// if user types faster than call is processed. As a result, we will deleteRows() and addRows()
 	// inside the listener. Else weird stuff happens.
@@ -165,23 +181,23 @@ function doSearch()
 		xhr.onreadystatechange = function()
 		{
 			deleteRows();
-			// Get a clean slate if not already (Reduce redundant calls)
-			if (allPages[1][0] != null) resetPages();
+			// Get a clean slate if not already
+			resetPages();
 
 			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
 			{
 				const jsonObject = JSON.parse( xhr.responseText );
 				if (jsonObject["error"] != "No Records Found") {
-					jsonObjects = jsonObject.results[0];
-					numberOfObjects = jsonObject.results[0].length;
-					addRows(jsonObjects, numberOfObjects);
+					const jsonObjects = jsonObject.results[0];
+					saveNewSearch(jsonObjects);
+					addRows();
 				} else {
-					addRows(null, 0);
+					addRows();
 				}
 			} 
 			else 
 			{
-				addRows(null, 0);
+				addRows();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -191,17 +207,154 @@ function doSearch()
 		console.log(err);
 		deleteRows();
 		resetPages();
-		addRows(null, 0);
+		addRows();
+	}
+}
+
+function doSearchNextPage()
+{
+	const search = document.getElementById("search").value;
+    const tmp = { 
+        search: search, 
+        userId: USER_ID,
+		offset: (currentPage) * ENTRIES_PER_PAGE
+    };
+	
+	let jsonPayload = JSON.stringify( tmp );
+
+	const url = urlBase + '/ContactSearchAPI.' + extension;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	// This code leverages event listeners which means that two calls can be firing at the same time
+	// if user types faster than call is processed. As a result, we will deleteRows() and addRows()
+	// inside the listener. Else weird stuff happens.
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			deleteRows();
+
+			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
+			{
+				const jsonObject = JSON.parse( xhr.responseText );
+				if (jsonObject["error"] != "No Records Found") {
+					const jsonObjects = jsonObject.results[0];
+
+					// Create new empty page
+					createNewPage();
+					// Enable left and right buttons
+					$('.right-btn').prop('disabled', false);
+					$('.left-btn').prop('disabled', false);
+					// Saves incoming data
+					saveNewSearch(jsonObjects);
+					// Appends incoming data to DOM
+					addRows();
+				} else {
+					addRows();
+					// Disable next button
+					noNext();
+					console.log("No results");
+				}
+			} 
+			else 
+			{
+				addRows();
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		console.log(err);
+		deleteRows();
+		addRows();
 	}
 }
 
 
 
-// HELPER FUNCTIONS 
+/*
+	Helper function
+	------------------------------
+	Put wrapper functions here as well.
+*/
 
-function populateSearchResults() {
+function newSearch() {
+	// Reset properties
+	resetPages();
 	doSearch();
 }
 
+// Starts back on page 1 and clean state due to new search
+function resetPages() {
+	// If the first entry is null, we never inserted anything
+	// thus, it will be redundant to instantiate again.
+	if (allPages[1][0] != null) {
+		allPages = {1: new Array(10).fill(null)};
+	}
+	currentPage = 1;
+	hasNext = {1: true};
+	$('.right-btn').prop('disabled', false);
+	$('.left-btn').prop('disabled', true);
+}
 
+// Goes to the next page
+function nextPage() {
+	// Disable it to prevent multiple calls
+	$('.right-btn').prop('disabled', true);
+	
+	// If we've already loaded the next page, just refresh the rows
+	// with an increment `currentPage`
+	if (currentPage + 1 in allPages) {
+		currentPage++;
+		deleteRows();
+		addRows();
+		if (hasNext[currentPage]) {
+			$('.right-btn').prop('disabled', false);
+			// Enable previous button
+			$('.left-btn').prop('disabled', false);
+		}
+	} else {
+		doSearchNextPage();
+	}
+	console.log("Going to next page..");
+}
 
+function createNewPage() {
+	currentPage++;
+	allPages[currentPage] = new Array(10).fill(null);
+	hasNext[currentPage] = true;
+}
+
+// Saves incoming search to `allPages`
+function saveNewSearch(jsonContacts) {
+	const n = jsonContacts.length;
+	for (let i = 0; i < n; i++) {
+		let entry = jsonContacts[i]
+		entry.name = entry.FirstName + " " + entry.LastName;		
+		allPages[currentPage][i] = entry;
+	}
+	// It's impossible for there to be more entries if there isn't event 10 in current one.
+	if (n < ENTRIES_PER_PAGE) {
+		$('.right-btn').prop('disabled', true);
+		hasNext[currentPage] = false;
+	}
+}
+
+// Go to previous page
+function previousPage() {
+	currentPage--;
+	deleteRows();
+	addRows();
+	$('.right-btn').prop('disabled', false);
+	if (currentPage == 1) {
+		$('.left-btn').prop('disabled', true);
+	}
+}
+
+// Disable next button
+function noNext() {
+	hasNext[currentPage] = false;
+	$('.right-btn').prop('disabled', true);
+}

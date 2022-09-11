@@ -13,9 +13,9 @@
 	else
 	{
 		// if adding lazy loading, select top 10 * instead of select *
-		$stmt = $conn->prepare("select * from Contacts where (FirstName LIKE ? OR LastName LIKE ? OR  Address LIKE ? OR PhoneNumber like ?) and UserID = ? limit 10");
+		$stmt = $conn->prepare("select * from Contacts where (FirstName LIKE ? OR LastName LIKE ? OR  Address LIKE ? OR PhoneNumber like ?) and UserID = ? limit 10 offset ?");
 		$searchParam = "%" . $inData["search"] . "%";
-		$stmt->bind_param("sssss", $searchParam , $searchParam , $searchParam , $searchParam , $inData["userId"]);
+		$stmt->bind_param("ssssss", $searchParam , $searchParam , $searchParam , $searchParam , $inData["userId"], $inData["offset"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
