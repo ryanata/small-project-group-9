@@ -173,24 +173,18 @@ td {
     }
 }
 
-/* Shared modal properties */
-
-#modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background-color: #386641;
-    transform: translate(-50%, -50%);
-}
-
 /* Add entry modal */
 .modal {
-    display: none;
     padding: 20px;
     border-radius: 10px;
     border-width: 10px;
     border: black;
     box-shadow: 0 5px 10px #e1e5ee;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #386641;
+    transform: translate(-50%, -50%);
 }
 
 .modal-title {
@@ -213,6 +207,10 @@ td {
     display: block;
     padding: 5px;
     margin: 10px auto 20px auto;
+}
+
+#add-modal {
+    display: none;
 }
 
 .submit-button {
@@ -263,7 +261,7 @@ td {
     fill: #368707;
 }
 
-.edit-modal {
+#edit-modal {
     display: none;
     width: 70%;
     height: 70%;

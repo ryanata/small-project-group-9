@@ -22,9 +22,9 @@ let currentPage = 1;
 	in the HTML. 
 */
 $(".add-btn").click(showAddModal);
-$(".add-modal-form").submit(() => {addEntry(); return false;})
-$(".edit-modal-form").submit((event) => {editEntry(); return false;})
-$(".close").click(() => {$(".add-modal").css("display", "none");});
+$("#add-modal-form").submit(() => {addEntry(); return false;})
+$("#edit-modal-form").submit((event) => {editEntry(); return false;})
+$(".close").click(() => {$("#add-modal").css("display", "none");});
 $('.left-btn').prop('disabled', true);
 $('.left-btn').on('click', () => { previousPage(); });
 $('.right-btn').on('click', () => { nextPage(); });
@@ -80,7 +80,7 @@ function addEntry() {
         userId: USER_ID,
     };
     doContact(newContact);
-    $(".add-modal").css("display", "none");
+    $("#add-modal").css("display", "none");
 }
 
 function editEntry() {
@@ -93,15 +93,15 @@ function editEntry() {
     };
 	doEditContact(newContact);
 	console.log(newContact);
-    $(".edit-modal").css("display", "none");
+    $("#edit-modal").css("display", "none");
 }
 
 function showAddModal() {
-    $(".add-modal").css("display", "initial");
+    $("#add-modal").css("display", "initial");
 }
 
 function showEditModal(firstName, lastName, email, phone) {
-	$(".edit-modal").css("display", "initial");
+	$("#edit-modal").css("display", "initial");
 	$("#editModalFirstName").val(firstName);
 	$("#editModalLastName").val(lastName);
 	$("#editModalEmail").val(email);
