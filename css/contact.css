@@ -180,12 +180,65 @@ td {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    width: 60%;
-    height: 60%;
+    background-color: #386641;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 5px 10px #e1e5ee;
 }
+
+.add-modal-title {
+    display: block;
+    margin: auto;
+    padding-bottom: 5px;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 24px;
+}
+
+.add-modal hr {
+    margin-bottom: 25px;
+}
+
+.add-modal-form input {
+    display: block;
+    padding: 5px;
+    margin: 10px auto 20px auto;
+}
+
+.submit-button {
+    display: block;
+    margin: 10px auto auto auto;
+    width: 200px;
+    background-color: #E3F0C3;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+}
+
+.close {
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+  }
+  .close:hover {
+    opacity: 1;
+  }
+  .close:before, .close:after {
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+  }
+  .close:before {
+    transform: rotate(45deg);
+  }
+  .close:after {
+    transform: rotate(-45deg);
+  }
 
 .contact-btn-td {
     padding-right: 0;
