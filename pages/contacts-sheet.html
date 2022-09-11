@@ -29,6 +29,10 @@
           <p class="title-text">mehoyminoy</p>
           <p class="subtitle-text">CONTACT MANAGER</p>
         </div>
+
+        <div class="greeting" id="greeting">
+          
+        </div>
       </div>
       <div class="search">
         <!--Search area centered with table & New contacts-->
@@ -69,13 +73,20 @@
     </div>
 
     <!-- Add entry modal -->
-    <div class="add-modal">
+    <div class="add-modal" id="">
+      <button type="button" class="close" data-dismiss="add-modal">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span class="add-modal-title">Add contact</span>
+      <hr>
       <form class="add-modal-form">
         <input id="addModalFirstName" placeholder="First Name" required/>
         <input id="addModalLastName" placeholder="Last Name" required/>
         <input id="addModalEmail" placeholder="Email" required/>
         <input id="addModalPhone" placeholder="Phone number" required/>
-        <input type="submit">
+        <div>
+          <input class ="submit-button" type="submit">
+        </div>
       </form>
     </div>
   </body>
