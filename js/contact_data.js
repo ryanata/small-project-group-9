@@ -44,10 +44,8 @@ function addEntry() {
         address: $('#addModalEmail').val(),
         userId: USER_ID,
     };
-    console.log(newContact);
     doContact(newContact);
     $(".add-modal").css("display", "none");
-	doSearch();
 }
 
 function showAddModal() {
@@ -90,10 +88,9 @@ function doContact(newContact)
 	{
 		xhr.onreadystatechange = function()
 		{
-			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
+			if (this.readyState == 4 && this.status == 200)
 			{
-				let jsonObject = JSON.parse( xhr.responseText );
-                console.log(jsonObject);
+				doSearch();
 			}
 		};
 		xhr.send(jsonPayload);
