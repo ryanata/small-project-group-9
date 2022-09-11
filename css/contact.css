@@ -173,10 +173,6 @@ td {
     }
 }
 
-#edit-modal {
-    display: initial;
-}
-
 /* Add entry modal */
 .modal {
     padding: 20px;
