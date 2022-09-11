@@ -7,13 +7,13 @@ let contacts = [];
 // Event Listeners
 $(".add-btn").click(showAddModal);
 $(".add-modal-form").submit(() => {addEntry(); return false;})
-$('#search').on('input', () => {doSearch()});
-doSearch();
+$('#search').on('input', () => {populateSearchResults()});
+populateSearchResults();
 
 // FUNCTIONS
 
 // Creates a row
-function createRow(name = "", email = "", phone = "") {
+function createRow(name = "&#10240;", email = "", phone = "") {
 	let tdIcon = `<td class="contact-btn-td">
 	<div class="contact-btn-container">
 	<button id="${name}-edit" class="contact-button">
@@ -24,7 +24,7 @@ function createRow(name = "", email = "", phone = "") {
 	</button>
 	</div>
   	</td>`;
-	if ((name.length + email.length + phone.length) == 0) {
+	if ((email.length + phone.length) == 0) {
 		tdIcon = "<td></td>";
 	}
     $("#tableBody").append(`<tr>
@@ -44,10 +44,8 @@ function addEntry() {
         address: $('#addModalEmail').val(),
         userId: USER_ID,
     };
-    console.log(newContact);
     doContact(newContact);
     $(".add-modal").css("display", "none");
-	doSearch();
 }
 
 function showAddModal() {
@@ -57,13 +55,14 @@ function showAddModal() {
 // Deletes all ten rows
 function deleteRows() {
     $('#tableBody').empty();
+	contacts = [];
 }
 
-// Adds ten rows for each page
+// Takes JSON data and creates rows
 function addRows(jsonContacts, numRows) {
 	for (let i = 0; i < numRows; i++) {
 		const entry = jsonContacts[i]
-		const name = entry.FirstName + entry.LastName;
+		const name = entry.FirstName + " " + entry.LastName;
 					
 		createRow(name, entry.Address, entry.PhoneNumber);
 		contacts.push(entry);
@@ -89,10 +88,9 @@ function doContact(newContact)
 	{
 		xhr.onreadystatechange = function()
 		{
-			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
+			if (this.readyState == 4 && this.status == 200)
 			{
-				let jsonObject = JSON.parse( xhr.responseText );
-                console.log(jsonObject);
+				doSearch();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -117,20 +115,30 @@ function doSearch()
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	deleteRows();
 	let jsonObjects = null;
 	let numberOfObjects = 0;
+	// This code leverages event listeners which means that two calls can be firing at the same time
+	// if user types faster than call is processed. As a result, we will deleteRows() and addRows()
+	// inside the listener. Else weird stuff happens.
 	try
 	{
 		xhr.onreadystatechange = function()
 		{
+			deleteRows();
 			if (this.readyState == 4 && this.status == 200 && xhr.responseText)
 			{
 				const jsonObject = JSON.parse( xhr.responseText );
 				if (jsonObject["error"] != "No Records Found") {
 					jsonObjects = jsonObject.results[0];
 					numberOfObjects = jsonObject.results[0].length;
+					addRows(jsonObjects, numberOfObjects);
+				} else {
+					addRows(null, 0);
 				}
+			} 
+			else 
+			{
+				addRows(null, 0);
 			}
 		};
 		xhr.send(jsonPayload);
@@ -138,9 +146,16 @@ function doSearch()
 	catch(err)
 	{
 		console.log(err);
+		deleteRows();
+		addRows(null, 0);
 	}
+}
 
-	addRows(jsonObjects, numberOfObjects)
+
+// HELPER FUNCTIONS 
+
+function populateSearchResults() {
+	doSearch();
 }
 
 
