@@ -261,12 +261,6 @@ td {
     fill: #368707;
 }
 
-#edit-modal {
-    display: none;
-    width: 70%;
-    height: 70%;
-}
-
 .nav-buttons {
     display: flex;
     justify-content: space-between;
