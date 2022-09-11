@@ -342,9 +342,9 @@ function nextPage() {
 		addRows();
 		if (hasNext[currentPage]) {
 			$('.right-btn').prop('disabled', false);
-			// Enable previous button
-			$('.left-btn').prop('disabled', false);
 		}
+		// Enable previous button
+		$('.left-btn').prop('disabled', false);
 	} else {
 		doSearchNextPage();
 	}
