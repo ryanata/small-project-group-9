@@ -14,6 +14,10 @@ $('.sign-up-button').click(function(e) {
 	{
 		dosignup();
 	}
+	else
+	{
+		document.getElementById("registerResult").innerHTML = "Please fill out all required forms.";
+	}
 });
 
 $(document).keypress(function(e) {
@@ -26,6 +30,10 @@ $(document).keypress(function(e) {
 			document.getElementById("loginPassword").value.length >= 1)
 		{
 			dosignup();
+		}
+		else
+		{
+			document.getElementById("registerResult").innerHTML = "Please fill out all required forms.";
 		}
 	}
 });

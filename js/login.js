@@ -11,6 +11,10 @@ $('.login-button').click(function(e) {
 	{
 		doLogin();
 	}
+	else
+	{
+		document.getElementById("loginResult").innerHTML = "Please fill out all required forms.";
+	}
 	
 });
 
@@ -21,6 +25,10 @@ $(document).keypress(function(e) {
 			document.getElementById("loginPassword").value.length >= 1)
 		{
 			doLogin();
+		}
+		else
+		{
+			document.getElementById("loginResult").innerHTML = "Please fill out all required forms.";
 		}
 	}
 });
