@@ -7,6 +7,13 @@ let lastName = "";
 // Event Listeners
 $('.sign-up-button').click(() => {dosignup()});
 
+$(document).keypress(function(e) {
+    if(e.which == 13) 
+	{
+		dosignup();
+	}
+});
+
 function dosignup()
 {
 	userId = 0;

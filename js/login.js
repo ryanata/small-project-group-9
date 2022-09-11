@@ -7,6 +7,12 @@ let lastName = "";
 // Event listeners
 $('.login-button').click(() => {doLogin()});
 
+$(document).keypress(function(e) {
+    if(e.which == 13) 
+	{
+		doLogin();
+	}
+});
 
 function doLogin()
 {
