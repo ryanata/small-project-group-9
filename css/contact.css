@@ -293,6 +293,11 @@ td {
     height: 45px;
     width: 45px;
     border: none;
+    cursor: pointer;
+}
+
+.right-btn:hover {
+    background-color: #368707;
 }
 
 .left-btn {
@@ -301,10 +306,20 @@ td {
     height: 45px;
     width: 45px;
     border: none;
+    cursor: pointer;
+}
+
+.left-btn:hover {
+    background-color: #368707;
 }
 
 button:disabled {
     opacity: 0.3;
+    cursor: auto;
+}
+
+button:disabled:hover {
+    background-color: #386641;
 }
 
 .footer {
