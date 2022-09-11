@@ -45,6 +45,7 @@ function dosignup()
 					return;
 				}
 				doEmail(jsonPayload);
+				firstName = document.getElementById("FirstNameSignup").value;
 				saveCookie();
                 window.location.href = "contacts-sheet.html";
 			}
@@ -87,4 +88,5 @@ function saveCookie()
 	date.setTime(date.getTime()+(minutes*60*1000));
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 	sessionStorage.setItem('userID', userId);
-}
+		sessionStorage.setItem('firstName', firstName);
+	}
