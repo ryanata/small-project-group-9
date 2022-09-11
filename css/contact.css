@@ -173,6 +173,10 @@ td {
     }
 }
 
+#edit-modal {
+    display: initial;
+}
+
 /* Add entry modal */
 .modal {
     padding: 20px;
@@ -207,10 +211,6 @@ td {
     display: block;
     padding: 5px;
     margin: 10px auto 20px auto;
-}
-
-#add-modal {
-    display: none;
 }
 
 .submit-button {
