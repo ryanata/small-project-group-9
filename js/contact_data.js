@@ -41,10 +41,7 @@ $('.table').on('click', "button", (event) => {
 		const contact_obj = allPages[currentPage][contact_idx];
 		$('#editModalSubmit').data("id", contact_obj.ID);
 		showEditModal(contact_obj.FirstName, contact_obj.LastName, contact_obj.Address, contact_obj.PhoneNumber);
-	} 
-});
-$('.table').on('click', "button", (event) => { 
-	if (event.currentTarget.id == 'delete') {
+	} else if (event.currentTarget.id == 'delete') {
 		const contact_idx = event.currentTarget.name;
 		const contact_obj = allPages[currentPage][contact_idx];
 		showDeleteModal(contact_obj);
@@ -54,7 +51,6 @@ $('.table').on('click', "button", (event) => {
 
 // Build greeting message using user's first name
 greetingMessage.innerText = sessionStorage.getItem('firstName') + "!";
-
 newSearch();
 
 /*
@@ -242,7 +238,7 @@ function doDelete(contact)
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				//let jsonObject = JSON.parse( xhr.responseText );
+				doSearch();
 			}
 		};
 		xhr.send(jsonPayload);
