@@ -17,6 +17,7 @@ let currentPage = 1;
 // Greeting paragraph
 let greetingMessage = document.getElementById("greeting-message");
 
+let confirmationMessage = document.getElementById("confirmation-message");
 /*
 	Event Listeners
 	------------------------------
@@ -203,8 +204,10 @@ function doEditContact(newContact)
 }
 
 // DELETE
-function showDeleteModal()
+function showDeleteModal(contact)
 {
+	confirmationMessage.innerText = "Are you sure you want to delete the entry for " + 
+									contact.FirstName + " " + contact.LastName +"?";
 	$("#delete-modal").css("display", "initial");
 }
 

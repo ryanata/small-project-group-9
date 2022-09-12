@@ -216,6 +216,15 @@ td {
     color: white;
 }
 
+.modal p {
+    display: block;
+    margin: auto;
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+    font-size: 15px;
+}
+
 .modal-form input {
     display: block;
     padding: 5px;
