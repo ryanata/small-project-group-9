@@ -100,7 +100,9 @@ function addEntry() {
 }
 
 function showAddModal() {
-    $("#add-modal").css("display", "initial");
+	$("#add-modal").css("display", "initial");
+	$("#edit-modal").css("display", "none");
+    $("#delete-modal").css("display", "none");
 }
 
 function editEntry() {
@@ -118,6 +120,8 @@ function editEntry() {
 
 function showEditModal(firstName, lastName, email, phone) {
 	$("#edit-modal").css("display", "initial");
+	$("#add-modal").css("display", "none");
+    $("#delete-modal").css("display", "none");
 	$("#editModalFirstName").val(firstName);
 	$("#editModalLastName").val(lastName);
 	$("#editModalEmail").val(email);
@@ -209,6 +213,8 @@ function showDeleteModal(contact)
 	confirmationMessage.innerText = "Are you sure you want to delete the entry for " + 
 									contact.FirstName + " " + contact.LastName +"?";
 	$("#delete-modal").css("display", "initial");
+	$("#edit-modal").css("display", "none");
+	$("#add-modal").css("display", "none");
 }
 
 function deleteContact(contact)
