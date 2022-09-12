@@ -80,6 +80,7 @@ body {
     padding-right: 7px;
     margin-bottom: 20px;
     border-width: 1px;
+    box-shadow: 3px 3px #595959;
 }
 
 .user-pass-input-short {
@@ -92,6 +93,7 @@ body {
     margin-bottom: 20px;
     border-width: 1px;
     box-sizing: border-box;
+    box-shadow: 3px 3px #595959;
 }
 
 .login-button {
@@ -107,10 +109,12 @@ body {
     font-size: 24px;
     color: white;
     cursor: pointer;
+    box-shadow: 3px 3px #595959;
 }
 
 .login-button:hover {
     background-color: #368707;
+    text-decoration: underline;
 }
 
 .signup-prompt {
@@ -177,10 +181,12 @@ body {
     font-size: 24px;
     color: white;
     cursor: pointer;
+    box-shadow: 3px 3px #595959;
 }
 
 .sign-up-button:hover {
     background-color: #368707;
+    text-decoration: underline;
 }
 
 .login-prompt {
