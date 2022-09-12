@@ -24,10 +24,11 @@ let greetingMessage = document.getElementById("greeting-message");
 	in the HTML. 
 */
 $(".add-btn").click(showAddModal);
-$("#add-modal-form").submit(() => {addEntry(); return false;})
-$("#edit-modal-form").submit((event) => {editEntry(); return false;})
+$("#add-modal-form").submit(() => {addEntry(); return false;});
+$("#edit-modal-form").submit((event) => {editEntry(); return false;});
 $("#close-add").click(() => {$("#add-modal").css("display", "none");});
 $("#close-edit").click(() => {$("#edit-modal").css("display", "none");});
+$("#close-delete").click(() => {$("#delete-modal").css("display", "none");});
 $('.left-btn').prop('disabled', true);
 $('.left-btn').on('click', () => { previousPage(); });
 $('.right-btn').on('click', () => { nextPage(); });
@@ -39,6 +40,14 @@ $('.table').on('click', "button", (event) => {
 		const contact_obj = allPages[currentPage][contact_idx];
 		$('#editModalSubmit').data("id", contact_obj.ID);
 		showEditModal(contact_obj.FirstName, contact_obj.LastName, contact_obj.Address, contact_obj.PhoneNumber);
+	} 
+});
+$('.table').on('click', "button", (event) => { 
+	if (event.currentTarget.id == 'delete') {
+		const contact_idx = event.currentTarget.name;
+		const contact_obj = allPages[currentPage][contact_idx];
+		showDeleteModal(contact_obj);
+		$("#confirm-delete").click(function(e) {deleteContact(contact_obj);});
 	} 
 });
 
@@ -89,6 +98,10 @@ function addEntry() {
     $("#add-modal").css("display", "none");
 }
 
+function showAddModal() {
+    $("#add-modal").css("display", "initial");
+}
+
 function editEntry() {
     const newContact = {
         firstname: $('#editModalFirstName').val(),
@@ -100,10 +113,6 @@ function editEntry() {
 	doEditContact(newContact);
 	console.log(newContact);
     $("#edit-modal").css("display", "none");
-}
-
-function showAddModal() {
-    $("#add-modal").css("display", "initial");
 }
 
 function showEditModal(firstName, lastName, email, phone) {
@@ -191,6 +200,18 @@ function doEditContact(newContact)
 	{
 		console.log(err);
 	}
+}
+
+// DELETE
+function showDeleteModal()
+{
+	$("#delete-modal").css("display", "initial");
+}
+
+function deleteContact(contact)
+{
+	
+	$("#delete-modal").css("display", "none");
 }
 
 function doSearch()
