@@ -219,10 +219,40 @@ function showDeleteModal(contact)
 
 function deleteContact(contact)
 {
-	
 	$("#delete-modal").css("display", "none");
+	doDelete(contact);
 }
 
+function doDelete(contact)
+{
+
+	let Id = contact.ID;
+
+	let tmp = {Id:Id};
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/DeleteContactAPI.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				//let jsonObject = JSON.parse( xhr.responseText );
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		
+	}
+}
+	
 function doSearch()
 {
 	const search = document.getElementById("search").value;
