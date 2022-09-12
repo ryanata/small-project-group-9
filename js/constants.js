@@ -1,2 +1,2 @@
-export const urlBase = 'http://67.207.82.94/LAMPAPI';
+export const urlBase = `http://${window.location.host}/LAMPAPI`;
 export const extension = 'php';
