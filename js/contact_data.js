@@ -96,6 +96,8 @@ function addEntry() {
 }
 
 function showAddModal() {
+	// Clears input fields
+	$('#add-modal-form')[0].reset();
 	$("#add-modal").css("display", "initial");
 	$("#edit-modal").css("display", "none");
     $("#delete-modal").css("display", "none");
