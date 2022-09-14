@@ -143,6 +143,24 @@ function addRows() {
 	}
 }
 
+function fadeInfoMessage() {
+	$(".info-msg").fadeIn({
+	  duration: 800,
+	  easing:"linear",
+	  step:function(now, fx){
+		$(this).css("bottom", 35 * now  +"px");
+	  }
+	})
+	setTimeout(() => {
+		$(".info-msg").fadeOut({
+		duration: 500,
+		step:function(now, fx){
+		  $(this).css("bottom", 35 * ( 2 - now) + "px");
+		}
+	  });
+	}, 3000);
+}
+
 /*
 	API Calls
 	------------------------------
@@ -450,6 +468,7 @@ function previousPage() {
 function noNext() {
 	hasNext[currentPage] = false;
 	$('.right-btn').prop('disabled', true);
+	fadeInfoMessage();
 }
 
 function doLogout()
