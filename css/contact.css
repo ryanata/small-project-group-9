@@ -1,12 +1,34 @@
 @import './alert.css';
 
 body {
-    background-color: #E3F0C3;
+    background-color: #EEF2E6
 }
 
 * {
     margin: 0;
     padding: 0;
+}
+
+.header-logo {
+    max-width: 50%;
+    min-width: 200px;
+    max-height: 50%;
+    margin-top: 7vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    display: block;
+    background-color: #3D8361;
+    box-shadow: 5px 5px black;
+    border: 1px solid black;
+}
+
+.imgbox {
+    display: grid;
+    height: 13vh;
+    max-height: 90px;
+    background-color: #3D8361;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23eef2e6' fill-opacity='0.42'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");    margin-bottom: 2vh;
 }
 
 .container {
@@ -45,15 +67,17 @@ body {
 }
 
 .subtitle-text {
+    display: block;
     position: relative;
-    margin-top: 14px;
-    padding-top: 30px;
+    margin-top: 10vh;
+    padding-top: 20px;
     line-height: 10px;
     font-size: 22px;
     width: 100%;
     display: flex;
     justify-content: center;
-    color: #595959;
+    color: black;
+    font-weight: bold;
 }
 
 /* Search area */
@@ -100,12 +124,12 @@ body {
     height: 42px;
     width: 70%;
     border: none;
-    background-color: #386641;
+    background-color: #3D8361;
     cursor: pointer;
 }
 
 .add-btn:hover {
-    background-color: #368707;
+    background-color: #46966f;
 }
 
 /* prevents text resizing when viewport resizes
@@ -139,7 +163,8 @@ table {
 }
 
 thead {
-    box-shadow: 0 5px 10px #e1e5ee;
+    box-shadow: 0 5px 10px #e1e5ee !important;
+    color: black !important;
 }
 
 th {
@@ -319,30 +344,17 @@ td {
     margin-right: auto;
 }
 
-.right-btn {
+.left-btn, .right-btn {
     border-radius: 4px;
-    background-color: #386641;
+    background-color: #3D8361;
     height: 45px;
     width: 45px;
     border: none;
     cursor: pointer;
 }
 
-.right-btn:hover {
-    background-color: #368707;
-}
-
-.left-btn {
-    border-radius: 4px;
-    background-color: #386641;
-    height: 45px;
-    width: 45px;
-    border: none;
-    cursor: pointer;
-}
-
-.left-btn:hover {
-    background-color: #368707;
+.left-btn:hover, .right-btn:hover {
+    background-color: #46966f;
 }
 
 button:disabled {
@@ -351,7 +363,7 @@ button:disabled {
 }
 
 button:disabled:hover {
-    background-color: #386641;
+    background-color: #3D8361;
 }
 
 .footer {
@@ -369,7 +381,7 @@ button:disabled:hover {
 
 .greeting-container {
     display: block;
-    margin: 50px 50px 0px 50px;
+    margin: 0px 50px 0px 50px;
     float: right;
 }
 
@@ -381,7 +393,6 @@ button:disabled:hover {
 .logout {
     border: none;
     background: none;
-    color: blue;
     font-size: 17px;
     font-family: 'Be Vietnam Pro', sans-serif;
     color: blue;
@@ -390,4 +401,48 @@ button:disabled:hover {
 
 .logout:hover {
     text-decoration: underline;
+}
+
+.switch {
+    float: left;
+    align-self: flex-end;
+    margin-left: 0.9375rem;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.inner-switch {
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 1.25rem;
+    width: 3.125rem;
+    text-align: center;
+    font-size: 1rem;
+    margin-left: 0.3125rem;
+    margin-bottom: 5vh;
+}
+
+.dark {
+    background-color: rgb(40, 40, 40);
+    color: #ffffff;
+}
+
+.dark .inner-switch {
+    border-color: #ffffff;
+}
+
+.dark .imgbox {
+    background-color:#335447;
+}
+
+.dark .subtitle-text {
+    color: white;
+}
+
+.dark * {
+    box-shadow: none;
+}
+
+.dark .logout {
+    color: rgb(128, 170, 254) !important;   
 }
