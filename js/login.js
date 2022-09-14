@@ -3,6 +3,7 @@ import { urlBase, extension } from './constants.js';
 let userId = 0;
 let firstName = "";
 let lastName = "";
+let mode = '';
 
 // Event listeners
 $('.login-button').click(function(e) {
@@ -32,6 +33,28 @@ $(document).keypress(function(e) {
 		}
 	}
 });
+
+$( ".inner-switch" ).on("click", function() {
+	if( $( "body" ).hasClass( "dark" )) {
+	  $( "body" ).removeClass( "dark" );
+	  $( ".inner-switch" ).text( "OFF" );
+	  mode = 'light';
+	} else {
+	  $( "body" ).addClass( "dark" );
+	  $( "button" ).removeClass( "dark" );
+	  $( ".inner-switch" ).text( "ON" );
+	  mode = 'dark';
+	}
+	sessionStorage.setItem('mode', mode);
+});
+
+// Check if dark mode was on the last page
+if(sessionStorage.getItem('mode') == 'dark')
+{
+	$( "body" ).addClass( "dark" );
+	$( "button" ).removeClass( "dark" );
+	$( ".inner-switch" ).text( "ON" );
+}
 
 function doLogin()
 {
@@ -136,13 +159,3 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-$( ".inner-switch" ).on("click", function() {
-		if( $( "body" ).hasClass( "dark" )) {
-		  $( "body" ).removeClass( "dark" );
-		  $( ".inner-switch" ).text( "OFF" );
-		} else {
-		  $( "body" ).addClass( "dark" );
-		  $( "button" ).removeClass( "dark" );
-		  $( ".inner-switch" ).text( "ON" );
-		}
-});

@@ -52,12 +52,23 @@ $( ".inner-switch" ).on("click", function() {
 	if( $( "body" ).hasClass( "dark" )) {
 	  $( "body" ).removeClass( "dark" );
 	  $( ".inner-switch" ).text( "OFF" );
+	  mode = 'light';
 	} else {
 	  $( "body" ).addClass( "dark" );
 	  $( "button" ).removeClass( "dark" );
 	  $( ".inner-switch" ).text( "ON" );
+	  mode = 'dark';
 	}
+	sessionStorage.setItem('mode', mode);
 });
+
+// Check if dark mode was on the last page
+if(sessionStorage.getItem('mode') == 'dark')
+{
+	$( "body" ).addClass( "dark" );
+	$( "button" ).removeClass( "dark" );
+	$( ".inner-switch" ).text( "ON" );
+}
 
 // Build greeting message using user's first name
 greetingMessage.innerText = sessionStorage.getItem('firstName') + "!";
@@ -483,7 +494,8 @@ function noNext() {
 
 function doLogout()
 {
-	sessionStorage.clear();
+	sessionStorage.removeItem('userID');
+	sessionStorage.removeItem('firstname');
 	window.location.href = "login.html";
 }
 

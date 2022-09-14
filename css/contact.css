@@ -1,7 +1,7 @@
 @import './alert.css';
 
 body {
-    background-color: #EEF2E6
+    background-color: #EEF2E6;
 }
 
 * {
@@ -207,11 +207,11 @@ td {
     border-radius: 10px;
     border-width: 10px;
     border: black;
-    box-shadow: 0 5px 10px #000000;
+    box-shadow: 0 5px 10px #000000 !important;
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: #386641;
+    background-color: #3D8361;
     transform: translate(-50%, -50%);
 }
 
@@ -262,15 +262,16 @@ td {
     display: block;
     margin: 10px auto auto auto;
     width: 160px;
-    background-color: #E3F0C3;
+    background-color: #c9d5c2;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
-    border-color: rgb(71, 89, 0);
+    border-color: black;
+    box-shadow: 3px 3px black !important;
     border-radius: 12px;
     cursor: pointer;
 }
     .submit-button:hover {
-        background-color: #f5ffdc;
+        background-color: #EEF2E6;
     }
 
 .close {
@@ -281,7 +282,7 @@ td {
     height: 32px;
     opacity: 0.3;
     font-size: 30px;
-    background-color:#386641;
+    background-color:#3D8361;
     border: none;
     opacity: 0.7;
     color: rgb(255, 255, 255);
