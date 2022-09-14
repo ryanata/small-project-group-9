@@ -100,7 +100,7 @@ body {
     box-sizing: border-box;
 }
 
-.login-button {
+.login-button, .sign-up-button {
     max-width: 100%;
     width: 437px;
     height: 47px;
@@ -116,8 +116,8 @@ body {
     box-shadow: 3px 3px black;
 }
 
-.login-button:hover {
-    background-color: #3D8361 !important;
+.login-button:hover, .sign-up-button:hover {
+    background-color: #46966f !important;
     text-decoration: underline;
 }
 
@@ -169,27 +169,6 @@ body {
     line-height: 76px;
     margin-top: 0px;
     text-align: center;
-}
-
-.sign-up-button {
-    width: 437px;
-    max-width: 100%;
-    height: 47px;
-    margin-top: 3px;
-    background-color: #386641 !important;
-    border-radius: 7px;
-    border-width: 0px;
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: bold;
-    font-size: 24px;
-    color: white !important;
-    cursor: pointer;
-    box-shadow: 3px 3px black;
-}
-
-.sign-up-button:hover {
-    background-color: #368707 !important;
-    text-decoration: underline;
 }
 
 .login-prompt {
