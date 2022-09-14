@@ -446,3 +446,8 @@ button:disabled:hover {
 .dark .logout {
     color: rgb(128, 170, 254) !important;   
 }
+
+.table *
+{
+    color: black !important;
+}
