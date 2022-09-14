@@ -48,6 +48,16 @@ $('.table').on('click', "button", (event) => {
 		$("#confirm-delete").click(function(e) {deleteContact(contact_obj);});
 	} 
 });
+$( ".inner-switch" ).on("click", function() {
+	if( $( "body" ).hasClass( "dark" )) {
+	  $( "body" ).removeClass( "dark" );
+	  $( ".inner-switch" ).text( "OFF" );
+	} else {
+	  $( "body" ).addClass( "dark" );
+	  $( "button" ).removeClass( "dark" );
+	  $( ".inner-switch" ).text( "ON" );
+	}
+});
 
 // Build greeting message using user's first name
 greetingMessage.innerText = sessionStorage.getItem('firstName') + "!";
@@ -476,3 +486,4 @@ function doLogout()
 	sessionStorage.clear();
 	window.location.href = "login.html";
 }
+
