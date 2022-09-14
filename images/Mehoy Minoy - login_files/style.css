@@ -1,5 +1,5 @@
 body {
-    background-color: #EEF2E6   ;
+    background-color: #D7F9DB;
 }
 
 .header-image {
@@ -7,17 +7,14 @@ body {
 }
 
 .header-logo {
-    max-width: 50%;
+    max-width: 100%;
     min-width: 200px;
-    max-height: 50%;
-    margin-top: 7vh;
+    max-height: 100%;
+    margin-top: -20px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
     display: block;
-    background-color: #3D8361;
-    box-shadow: 5px 5px black;
-    border: 1px solid black;
 }
 
 * {
@@ -28,9 +25,8 @@ body {
 .imgbox {
     display: grid;
     height: 13vh;
-    max-height: 90px;
-    background-color: #3D8361;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23eef2e6' fill-opacity='0.42'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");    margin-bottom: 2vh;
+    background-color: #6A9971;
+    margin-bottom: 5vh;
 }
 
 .sign-in-container {
@@ -86,6 +82,7 @@ body {
     padding-right: 7px;
     margin-bottom: 15px;
     border-width: 1px;
+    box-shadow: 3px 3px #595959 !important;
 }
 
 .user-pass-input-short {
@@ -98,6 +95,7 @@ body {
     margin-bottom: 15px;
     border-width: 1px;
     box-sizing: border-box;
+    box-shadow: 3px 3px #595959 !important;
 }
 
 .login-button {
@@ -105,19 +103,19 @@ body {
     width: 437px;
     height: 47px;
     margin-top: 3px;
-    background-color: #3D8361;
+    background-color: #087461 !important;
     border-radius: 7px;
     border-width: 0px;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
     font-size: 24px;
-    color: white;
+    color: white !important;
     cursor: pointer;
-    box-shadow: 3px 3px black;
+    box-shadow: 3px 3px #595959 !important;
 }
 
 .login-button:hover {
-    background-color: #3D8361 !important;
+    background-color: #357367 !important;
     text-decoration: underline;
 }
 
@@ -133,7 +131,7 @@ body {
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;
-    color: #5c5cff;
+    color: #5c5cff !important;
 }
 
 .signup-prompt-butt:hover {
@@ -184,7 +182,7 @@ body {
     font-size: 24px;
     color: white !important;
     cursor: pointer;
-    box-shadow: 3px 3px black;
+    box-shadow: 3px 3px #595959 !important;
 }
 
 .sign-up-button:hover {
@@ -325,46 +323,22 @@ body {
     float: left;
     align-self: flex-end;
     margin-left: 0.9375rem;
-    font-family: 'Noto Sans', sans-serif;
 }
 
 .inner-switch {
     display: inline-block;
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid #555;
     border-radius: 1.25rem;
     width: 3.125rem;
     text-align: center;
     font-size: 1rem;
     margin-left: 0.3125rem;
-    margin-bottom: 5vh;
 }
 
-.dark {
-    background-color: rgb(40, 40, 40);
+.dark,
+.dark * {
+    background-color: #222;
     color: #ffffff;
-}
-
-.dark .inner-switch {
     border-color: #ffffff;
-}
-
-.dark .imgbox {
-    background-color:#335447;
-}
-
-.dark .signup-prompt-butt {
-    color: rgb(128, 170, 254) !important;
-}
-
-.dark .login-prompt-butt {
-    color: rgb(128, 170, 254) !important;
-}
-
-.dark .header-logo {
-    box-shadow: none;
-}
-
-.dark button {
-    box-shadow: none;
 }
