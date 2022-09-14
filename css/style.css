@@ -78,9 +78,9 @@ body {
     border-radius: 7px;
     padding-left: 7px;
     padding-right: 7px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-width: 1px;
-    box-shadow: 3px 3px #595959;
+    box-shadow: 3px 3px #595959 !important;
 }
 
 .user-pass-input-short {
@@ -90,10 +90,10 @@ body {
     border-radius: 7px;
     padding-left: 7px;
     padding-right: 7px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-width: 1px;
     box-sizing: border-box;
-    box-shadow: 3px 3px #595959;
+    box-shadow: 3px 3px #595959 !important;
 }
 
 .login-button {
@@ -101,19 +101,19 @@ body {
     width: 437px;
     height: 47px;
     margin-top: 3px;
-    background-color: #386641;
+    background-color: #386641 !important;
     border-radius: 7px;
     border-width: 0px;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
     font-size: 24px;
-    color: white;
+    color: white !important;
     cursor: pointer;
-    box-shadow: 3px 3px #595959;
+    box-shadow: 3px 3px #595959 !important;
 }
 
 .login-button:hover {
-    background-color: #368707;
+    background-color: #368707 !important;
     text-decoration: underline;
 }
 
@@ -129,7 +129,7 @@ body {
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;
-    color: blue;
+    color: #5c5cff !important;
 }
 
 .signup-prompt-butt:hover {
@@ -164,7 +164,6 @@ body {
     font-size: 42px;
     line-height: 76px;
     margin-top: 0px;
-    margin-bottom: 17px;
     text-align: center;
 }
 
@@ -173,19 +172,19 @@ body {
     max-width: 100%;
     height: 47px;
     margin-top: 3px;
-    background-color: #386641;
+    background-color: #386641 !important;
     border-radius: 7px;
     border-width: 0px;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
     font-size: 24px;
-    color: white;
+    color: white !important;
     cursor: pointer;
-    box-shadow: 3px 3px #595959;
+    box-shadow: 3px 3px #595959 !important;
 }
 
 .sign-up-button:hover {
-    background-color: #368707;
+    background-color: #368707 !important;
     text-decoration: underline;
 }
 
@@ -201,7 +200,7 @@ body {
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;
-    color: blue;
+    color: #5c5cff !important;
 }
 
 .login-prompt-butt:hover {
@@ -218,7 +217,7 @@ body {
     line-height: 30px;
     margin-top: 4px;
     margin-bottom: 5px;
-    color: red;
+    color: red !important;
 }
 
 .header-background {
@@ -316,4 +315,28 @@ body {
 
 .error-message {
     color: red;
+}
+
+.switch {
+    float: left;
+    align-self: flex-end;
+    margin-left: 0.9375rem;
+}
+
+.inner-switch {
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 1.25rem;
+    width: 3.125rem;
+    text-align: center;
+    font-size: 1rem;
+    margin-left: 0.3125rem;
+}
+
+.dark,
+.dark * {
+    background-color: #222;
+    color: #ffffff;
+    border-color: #ffffff;
 }

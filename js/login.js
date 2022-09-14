@@ -135,3 +135,14 @@ function doLogout()
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
+
+$( ".inner-switch" ).on("click", function() {
+		if( $( "body" ).hasClass( "dark" )) {
+		  $( "body" ).removeClass( "dark" );
+		  $( ".inner-switch" ).text( "OFF" );
+		} else {
+		  $( "body" ).addClass( "dark" );
+		  $( "button" ).removeClass( "dark" );
+		  $( ".inner-switch" ).text( "ON" );
+		}
+});

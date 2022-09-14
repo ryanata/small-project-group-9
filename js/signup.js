@@ -121,3 +121,14 @@ function saveCookie()
 	sessionStorage.setItem('userID', userId);
 		sessionStorage.setItem('firstName', firstName);
 	}
+
+$( ".inner-switch" ).on("click", function() {
+		if( $( "body" ).hasClass( "dark" )) {
+		  $( "body" ).removeClass( "dark" );
+		  $( ".inner-switch" ).text( "OFF" );
+		} else {
+		  $( "body" ).addClass( "dark" );
+		  $( "button" ).removeClass( "dark" );
+		  $( ".inner-switch" ).text( "ON" );
+		}
+});
