@@ -38,6 +38,28 @@ $(document).keypress(function(e) {
 	}
 });
 
+$( ".inner-switch" ).on("click", function() {
+	if( $( "body" ).hasClass( "dark" )) {
+	  $( "body" ).removeClass( "dark" );
+	  $( ".inner-switch" ).text( "OFF" );
+	  mode = 'light';
+	} else {
+	  $( "body" ).addClass( "dark" );
+	  $( "button" ).removeClass( "dark" );
+	  $( ".inner-switch" ).text( "ON" );
+	  mode = 'dark';
+	}
+	sessionStorage.setItem('mode', mode);
+});
+
+// Check if dark mode was on the last page
+if(sessionStorage.getItem('mode') == 'dark')
+{
+	$( "body" ).addClass( "dark" );
+	$( "button" ).removeClass( "dark" );
+	$( ".inner-switch" ).text( "ON" );
+}
+
 function dosignup()
 {
 	userId = 0;
@@ -121,3 +143,14 @@ function saveCookie()
 	sessionStorage.setItem('userID', userId);
 		sessionStorage.setItem('firstName', firstName);
 	}
+
+$( ".inner-switch" ).on("click", function() {
+		if( $( "body" ).hasClass( "dark" )) {
+		  $( "body" ).removeClass( "dark" );
+		  $( ".inner-switch" ).text( "OFF" );
+		} else {
+		  $( "body" ).addClass( "dark" );
+		  $( "button" ).removeClass( "dark" );
+		  $( ".inner-switch" ).text( "ON" );
+		}
+});

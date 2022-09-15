@@ -25,10 +25,15 @@
   <body>
     <div class="container">
       <div class="banner-text">
-        <div class="logo">
-          <p class="title-text">mehoyminoy</p>
-          <p class="subtitle-text">CONTACT MANAGER</p>
+        <div class="imgbox">
+          <img class="header-logo" src="../images/MediumLogo.svg"></img>
         </div>
+
+        <div class="switch">Dark mode:              
+          <span class="inner-switch">OFF</span>
+        </div>
+
+        <p class="subtitle-text">CONTACT MANAGER</p>
 
         <div class="greeting-container" id="greeting-container">
           <p class="greeting">Hello</p>
@@ -70,7 +75,7 @@
         </div>
       </div>
       <div class="footer">
-        <img class="footer-img" src="../images/FooterLogo.svg"></img>
+        
       </div>
     </div>
 
@@ -88,7 +93,7 @@
         <input id="addModalEmail" placeholder="Email" required/>
         <input id="addModalPhone" placeholder="Phone number" required/>
         <div>
-          <input class="submit-button" type="submit">
+          <input class="submit-button" type="submit" value="Add contact">
         </div>
       </form>
     </div>
@@ -107,7 +112,7 @@
         <input id="editModalEmail" placeholder="Email" required/>
         <input id="editModalPhone" placeholder="Phone number" required/>
         <div>
-          <input id="editModalSubmit" class="submit-button" type="submit">
+          <input id="editModalSubmit" class="submit-button" type="submit" value="Save changes">
         </div>
       </form>
     </div>
