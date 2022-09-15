@@ -325,6 +325,8 @@ function doSearch()
 					addRows();
 				} else {
 					addRows();
+					$('.right-btn').prop('disabled', true);
+					hasNext[currentPage] = false;
 				}
 			} 
 			else 
