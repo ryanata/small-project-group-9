@@ -297,7 +297,7 @@ td {
     margin: 10px auto auto auto;
     width: 160px;
     height: 30px;
-    background-color: rgb(204, 33, 33);
+    background-color: #BA5A45;
     color: white;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
@@ -306,7 +306,7 @@ td {
     cursor: pointer;
   }
   .confirm-delete:hover {
-    opacity: 1;
+    background-color: #c72500;
   }
 
 .contact-btn-td {
