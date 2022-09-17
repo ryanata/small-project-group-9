@@ -1,6 +1,5 @@
 import { urlBase, extension } from './constants.js';
 
-
 /*
 	Properties
 	-------------------------
@@ -18,6 +17,7 @@ let currentPage = 1;
 let greetingMessage = document.getElementById("greeting-message");
 
 let confirmationMessage = document.getElementById("confirmation-message");
+
 /*
 	Event Listeners
 	------------------------------
@@ -61,6 +61,28 @@ $( ".inner-switch" ).on("click", function() {
 	}
 	sessionStorage.setItem('mode', mode);
 });
+$("input[type='tel']").each(function(){
+	$(this).on("change keyup paste", function (e) {
+	  var output,
+		$this = $(this),
+		input = $this.val();
+  
+	  if(e.keyCode != 8) {
+		input = input.replace(/[^0-9]/g, '');
+		var area = input.substr(0, 3);
+		var pre = input.substr(3, 3);
+		var tel = input.substr(6, 4);
+		if (area.length < 3) {
+		  output = "(" + area;
+		} else if (area.length == 3 && pre.length < 3) {
+		  output = "(" + area + ")" + " " + pre;
+		} else if (area.length == 3 && pre.length == 3) {
+		  output = "(" + area + ")" + " " + pre + "-" + tel;
+		}
+		$this.val(output);
+	  }
+	});
+  });
 
 // Check if dark mode was on the last page
 if(sessionStorage.getItem('mode') == 'dark')
@@ -103,15 +125,21 @@ function createRow(name = "&#10240;", email = "", phone = "", idx="") {
     </tr>`);
 }
 
+function removeSpecialChars(rawString) {
+	const noSpecialCharacters = rawString.replace(/[^0-9]/g, '');
+	return noSpecialCharacters;
+}
+
 // Adds an entry to the database
 function addEntry() {
     const newContact = {
         firstname: $('#addModalFirstName').val(),
         lastname: $('#addModalLastName').val(),
-        phone: $('#addModalPhone').val(),
+        phone: removeSpecialChars($('#addModalPhone').val()),
         address: $('#addModalEmail').val(),
         userId: USER_ID,
     };
+	console.log(newContact.phone);
     doContact(newContact);
     $("#add-modal").css("display", "none");
 }
