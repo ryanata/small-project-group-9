@@ -117,10 +117,19 @@ function createRow(name = "&#10240;", email = "", phone = "", idx="") {
 	if (idx === "") {
 		tdIcon = "<td></td>";
 	}
+
+	let formattedPhone = "";
+
+	if(phone != "")
+	{
+		formattedPhone = "(" + phone.slice(0, 3) + ") " + phone.slice(3, 6) +
+							 "-" + phone.slice(6, 10);
+	}
+
     $("#tableBody").append(`<tr>
     <td>${name}</td>
     <td>${email}</td>
-    <td>${phone}</td>
+    <td>${formattedPhone}</td>
     ${tdIcon}
     </tr>`);
 }
@@ -160,7 +169,6 @@ function editEntry() {
 		Id: $('#editModalSubmit').data("id")
     };
 	doEditContact(newContact);
-	console.log(newContact);
     $("#edit-modal").css("display", "none");
 }
 
