@@ -139,7 +139,6 @@ function addEntry() {
         address: $('#addModalEmail').val(),
         userId: USER_ID,
     };
-	console.log(newContact.phone);
     doContact(newContact);
     $("#add-modal").css("display", "none");
 }
@@ -156,7 +155,7 @@ function editEntry() {
     const newContact = {
         firstname: $('#editModalFirstName').val(),
         lastname: $('#editModalLastName').val(),
-        phone: $('#editModalPhone').val(),
+        phone: removeSpecialChars($('#editModalPhone').val()),
         address: $('#editModalEmail').val(),
 		Id: $('#editModalSubmit').data("id")
     };
