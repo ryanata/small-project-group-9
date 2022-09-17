@@ -15,8 +15,11 @@ let hasNext = {1: true};
 let currentPage = 1;
 // Greeting paragraph
 let greetingMessage = document.getElementById("greeting-message");
-
+let formattedPhone = "";
 let confirmationMessage = document.getElementById("confirmation-message");
+let addError = document.getElementById("addError");
+let editError = document.getElementById("editError");
+
 
 /*
 	Event Listeners
@@ -24,7 +27,7 @@ let confirmationMessage = document.getElementById("confirmation-message");
 	Attach all event listeners here for consistency. Do not put an event listener
 	in the HTML. 
 */
-$(".add-btn").click(showAddModal);
+$(".add-btn").click(newAddModal);
 $("#add-modal-form").submit(() => {addEntry(); return false;});
 $("#edit-modal-form").submit((event) => {editEntry(); return false;});
 $("#close-add").click(() => {$("#add-modal").css("display", "none");});
@@ -40,6 +43,7 @@ $('.table').on('click', "button", (event) => {
 		const contact_idx = event.currentTarget.name;
 		const contact_obj = allPages[currentPage][contact_idx];
 		$('#editModalSubmit').data("id", contact_obj.ID);
+		editError.innerText = "";
 		showEditModal(contact_obj.FirstName, contact_obj.LastName, contact_obj.Address, contact_obj.PhoneNumber);
 	} else if (event.currentTarget.id == 'delete') {
 		const contact_idx = event.currentTarget.name;
@@ -96,6 +100,18 @@ if(sessionStorage.getItem('mode') == 'dark')
 greetingMessage.innerText = sessionStorage.getItem('firstName') + "!";
 newSearch();
 
+function validateEmail(email) 
+{
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+function newAddModal()
+{
+	addError.innerText = "";
+	showAddModal();
+}
+
 /*
 	Dynamic DOM Functions
 	------------------------------
@@ -118,7 +134,7 @@ function createRow(name = "&#10240;", email = "", phone = "", idx="") {
 		tdIcon = "<td></td>";
 	}
 
-	let formattedPhone = "";
+	formattedPhone = "";
 
 	if(phone != "")
 	{
@@ -148,8 +164,21 @@ function addEntry() {
         address: $('#addModalEmail').val(),
         userId: USER_ID,
     };
-    doContact(newContact);
-    $("#add-modal").css("display", "none");
+	
+	if (!validateEmail(newContact.address))
+	{
+		addError.innerText = "Please enter a valid email address.";
+	}
+	else if (newContact.phone.length != 10)
+	{
+		addError.innerText = "Please enter a valid phone number."
+	}
+	else
+	{
+		doContact(newContact);
+		$("#add-modal").css("display", "none");
+	}
+    
 }
 
 function showAddModal() {
@@ -168,18 +197,35 @@ function editEntry() {
         address: $('#editModalEmail').val(),
 		Id: $('#editModalSubmit').data("id")
     };
-	doEditContact(newContact);
-    $("#edit-modal").css("display", "none");
+
+	if (!validateEmail(newContact.address))
+	{
+		editError.innerText = "Please enter a valid email address.";
+	}
+	else if (newContact.phone.length != 10)
+	{
+		editError.innerText = "Please enter a valid phone number."
+	}
+	else
+	{
+		doEditContact(newContact);
+		$("#edit-modal").css("display", "none");
+	}
+
 }
 
 function showEditModal(firstName, lastName, email, phone) {
+	formattedPhone = "(" + phone.slice(0, 3) + ") " + phone.slice(3, 6) +
+					 "-" + phone.slice(6, 10);
+
 	$("#edit-modal").css("display", "initial");
 	$("#add-modal").css("display", "none");
     $("#delete-modal").css("display", "none");
 	$("#editModalFirstName").val(firstName);
 	$("#editModalLastName").val(lastName);
 	$("#editModalEmail").val(email);
-	$("#editModalPhone").val(phone);
+	$("#editModalPhone").val(formattedPhone);
+
 }
 
 // Deletes all ten rows

@@ -260,7 +260,8 @@ td {
 
 .submit-button {
     display: block;
-    margin: 10px auto auto auto;
+    margin: 20px auto 10px auto;
+    height: 30px;
     width: 160px;
     background-color: #c9d5c2;
     font-family: 'Noto Sans', sans-serif;
@@ -297,7 +298,7 @@ td {
     margin: 10px auto auto auto;
     width: 160px;
     height: 30px;
-    background-color: #BA5A45;
+    background-color: #b7442a;
     color: white;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
@@ -457,4 +458,9 @@ label {
     margin-left: 10px;
     color: white;
     font-family: 'Noto Sans', sans-serif;
+}
+
+.error-message {
+    max-width: 175px;
+    text-align: left;   
 }
