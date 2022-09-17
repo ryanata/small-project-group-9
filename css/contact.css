@@ -452,3 +452,9 @@ button:disabled:hover {
 {
     color: black !important;
 }
+
+label {
+    margin-left: 10px;
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+}

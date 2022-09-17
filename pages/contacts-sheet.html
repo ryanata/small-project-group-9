@@ -88,10 +88,17 @@
       </span>
       <hr>
       <form id="add-modal-form" class="modal-form">
-        <input id="addModalFirstName" placeholder="First Name" required/>
-        <input id="addModalLastName" placeholder="Last Name" required/>
-        <input id="addModalEmail" placeholder="Email" required/>
-        <input id="addModalPhone" placeholder="Phone number" required/>
+        <label for="addModalFirstName" class="form-label">First Name</label>
+        <input id="addModalFirstName" required/>
+
+        <label for="addModalLastName" class="form-label">Last Name</label>
+        <input id="addModalLastName" required/>
+
+        <label for="addModalEmail" class="form-label">Email</label>
+        <input id="addModalEmail" required/>
+
+        <label for="addModalPhone" class="form-label">Phone #</label>
+        <input id="addModalPhone" required/>
         <div>
           <input class="submit-button" type="submit" value="Add contact">
         </div>
@@ -107,9 +114,16 @@
       </span>
       <hr>
       <form id="edit-modal-form" class="modal-form">
+        <label for="editModalFirstName" class="form-label">First Name</label>
         <input id="editModalFirstName" placeholder="First Name" required/>
+
+        <label for="editModalLastName" class="form-label">Last Name</label>
         <input id="editModalLastName" placeholder="Last Name" required/>
+
+        <label for="editModalEmail" class="form-label">Email</label>
         <input id="editModalEmail" placeholder="Email" required/>
+
+        <label for="editModalPhone" class="form-label">Phone #</label>
         <input id="editModalPhone" placeholder="Phone number" required/>
         <div>
           <input id="editModalSubmit" class="submit-button" type="submit" value="Save changes">
@@ -124,7 +138,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </span>
-      <p id="confirmation-message">are you suer you want to</p>
+      <p id="confirmation-message"></p>
       <button class="confirm-delete" id="confirm-delete">Confirm</button>
     </div>
 
