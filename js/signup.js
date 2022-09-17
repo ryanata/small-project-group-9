@@ -6,35 +6,41 @@ let lastName = "";
 
 // Event Listeners
 $('.sign-up-button').click(function(e) {
-	if (document.getElementById("FirstNameSignup").value.length >= 1 &&
-		document.getElementById("LastNameSignup").value.length >= 1 &&
-		document.getElementById("email").value.length >= 1 &&
-		document.getElementById("loginName").value.length >= 1 &&
-		document.getElementById("loginPassword").value.length >= 1)
+	if (!(document.getElementById("FirstNameSignup").value.length >= 1) ||
+		!(document.getElementById("LastNameSignup").value.length >= 1) ||
+		!(document.getElementById("email").value.length >= 1) ||
+		!(document.getElementById("loginName").value.length >= 1) ||
+		!(document.getElementById("loginPassword").value.length >= 1))
 	{
-		dosignup();
+		document.getElementById("registerResult").innerHTML = "Please fill out all required forms.";
 	}
 	else
 	{
-		document.getElementById("registerResult").innerHTML = "Please fill out all required forms.";
+		if (validateEmail(document.getElementById("email").value))
+			dosignup();
+		else
+			document.getElementById("registerResult").innerHTML = "Please enter a valid email address.";
 	}
 });
 
 $(document).keypress(function(e) {
     if(e.which == 13) 
 	{
-		if (document.getElementById("FirstNameSignup").value.length >= 1 &&
-			document.getElementById("LastNameSignup").value.length >= 1 &&
-			document.getElementById("email").value.length >= 1 &&
-			document.getElementById("loginName").value.length >= 1 &&
-			document.getElementById("loginPassword").value.length >= 1)
-		{
+		if (!(document.getElementById("FirstNameSignup").value.length >= 1) ||
+		!(document.getElementById("LastNameSignup").value.length >= 1) ||
+		!(document.getElementById("email").value.length >= 1) ||
+		!(document.getElementById("loginName").value.length >= 1) ||
+		!(document.getElementById("loginPassword").value.length >= 1))
+	{
+		document.getElementById("registerResult").innerHTML = "Please fill out all required forms.";
+	}
+	else
+	{
+		if (validateEmail(document.getElementById("email").value))
 			dosignup();
-		}
 		else
-		{
-			document.getElementById("registerResult").innerHTML = "Please fill out all required forms.";
-		}
+			document.getElementById("registerResult").innerHTML = "Please enter a valid email address.";
+	}
 	}
 });
 
@@ -58,6 +64,12 @@ if(sessionStorage.getItem('mode') == 'dark')
 	$( "body" ).addClass( "dark" );
 	$( "button" ).removeClass( "dark" );
 	$( ".inner-switch" ).text( "ON" );
+}
+
+function validateEmail(email) 
+{
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
 }
 
 function dosignup()
@@ -94,9 +106,10 @@ function dosignup()
 				
 				if( userId < 1 || error.length != 0)
 				{
-					document.getElementById("registerResult").innerHTML = "An existing user has that login already.";
+					document.getElementById("registerResult").innerHTML = "That username is taken.";
 					return;
 				}
+
 				doEmail(jsonPayload);
 				firstName = document.getElementById("FirstNameSignup").value;
 				saveCookie();
