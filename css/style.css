@@ -298,6 +298,7 @@ body {
 
 .error-message {
     color: red;
+    margin-top: 5px;
 }
 
 .switch {
