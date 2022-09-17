@@ -9,7 +9,6 @@
 	} 
 	else
 	{
-		
 		// checking if userID already exists
 		// gets number of rows with the passed userID
 		$stmt1 = $conn->prepare("select count(*) as count from Users where login = ?");
@@ -19,13 +18,32 @@
 		$stmt1->execute();
 		// store result
 		$result = $stmt1->get_result();
-		$row = $result->fetch_assoc();
+		$row1 = $result->fetch_assoc();
 
 		$stmt1->close();
-		if ((int)$row['count'] > 0) // if the userID exists
+
+		// checking if email already exists
+		// gets number of rows with the passed email
+		$stmt2 = $conn->prepare("select count(*) as count from Users where email = ?");
+		// binds parameter for the question mark thing
+		$stmt2->bind_param("s", $email);
+		$email = $inData["email"];
+		$stmt2->execute();
+		// store result
+		$result = $stmt2->get_result();
+		$row2 = $result->fetch_assoc();
+
+		$stmt2->close();
+		
+		if ((int)$row1['count'] > 0) // if the user exists
 		{
 			$conn->close();
 			returnWithError("Existing user found");
+		}
+		else if ((int)$row2['count'] > 0) // if the email exists
+		{
+			$conn->close();
+			returnWithError("Existing email found");
 		}
 		else
 		{

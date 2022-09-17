@@ -102,18 +102,26 @@ function dosignup()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
+				email = jsonObject.email;
 				const error = jsonObject.error;
 				
-				if( userId < 1 || error.length != 0)
+				if(error == "Existing user found")
 				{
 					document.getElementById("registerResult").innerHTML = "That username is taken.";
 					return;
 				}
-
-				doEmail(jsonPayload);
-				firstName = document.getElementById("FirstNameSignup").value;
-				saveCookie();
-                window.location.href = "contacts-sheet.html";
+				else if(error == "Existing email found")
+				{
+					document.getElementById("registerResult").innerHTML = "That email is taken.";
+					return;
+				}
+				else
+				{
+					doEmail(jsonPayload);
+					firstName = document.getElementById("FirstNameSignup").value;
+					saveCookie();
+					window.location.href = "contacts-sheet.html";
+				}
 			}
 		};
 		xhr.send(jsonPayload);
