@@ -452,6 +452,7 @@ button:disabled:hover {
 .table *
 {
     color: black !important;
+    overflow: hidden;
 }
 
 label {
