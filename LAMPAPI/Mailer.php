@@ -20,8 +20,28 @@
   $mail->IsHTML(true);
   $mail->AddAddress($inData["email"], "recipient-name");
   $mail->SetFrom("smallproject9cop@gmail.com", "test");
-  $mail->Subject = "Test is Test Email sent via Gmail SMTP Server using PHP Mailer";
-  $content = "<b>This is a Test Email sent via Gmail SMTP Server using PHP mailer class.</b>";
+  # Email sent via Gmail SMTP Server using PHP Mailer
+  $mail->Subject = "Welcome to mihoyminoy!";
+  $content = "
+              <!DOCTYPE html>
+              <html>
+                <body>
+
+                      <style>
+                        html * {
+                          font-family: Verdana;
+                        text-align: center;
+                        }
+                      </style>
+                      
+                      <h1>mehoyminoy</h1>
+                      <p>Hello,</p>
+                      <p>Thank you for joining mehoyminoy, the free browser-based contact manager! We hope you enjoy your stay!</p>
+                      <p>Best,<br>The mehoyminoy team</p>
+
+                </body>
+              </html>
+            ";
 
   $mail->MsgHTML($content); 
   if(!$mail->Send()) {
