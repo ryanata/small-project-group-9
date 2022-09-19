@@ -19,9 +19,9 @@
 
   $mail->IsHTML(true);
   $mail->AddAddress($inData["email"], "recipient-name");
-  $mail->SetFrom("smallproject9cop@gmail.com", "test");
+  $mail->SetFrom("smallproject9cop@gmail.com", "mehoyminoy");
   # Email sent via Gmail SMTP Server using PHP Mailer
-  $mail->Subject = "Welcome to mihoyminoy!";
+  $mail->Subject = "Welcome to mehoyminoy!";
   $content = "
               <!DOCTYPE html>
               <html>
